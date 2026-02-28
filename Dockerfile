@@ -1,44 +1,20 @@
-FROM node:18-alpine AS base
+FROM node:18-alpine
 
-# Install dependencies
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat git
+
 WORKDIR /app
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Build the source code
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 RUN npm run build
 
-# Production image
-FROM base AS runner
-WORKDIR /app
-
 ENV NODE_ENV=production
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy everything needed to run
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/theme.config.tsx ./theme.config.tsx
-COPY --from=builder /app/tsconfig.json ./tsconfig.json
-COPY --from=builder /app/pages ./pages
-COPY --from=builder /app/components ./components
-
-USER nextjs
-
-EXPOSE 3001
-
 ENV PORT=3001
 ENV HOSTNAME="0.0.0.0"
+
+EXPOSE 3001
 
 CMD ["npm", "run", "start"]
