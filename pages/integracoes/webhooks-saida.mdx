@@ -1,0 +1,243 @@
+# Webhooks de Saida
+
+Os **webhooks de saida** permitem que o Dialogi envie notificacoes automaticas para seus outros sistemas quando eventos importantes acontecem — como uma nova mensagem, uma conversa atribuida ou um novo contato.
+
+import { Callout, Steps } from 'nextra/components'
+import { ApiEndpoint } from '../../components/ApiEndpoint'
+import { Screenshot } from '../../components/Screenshot'
+
+## Como funciona
+
+```
+Evento no Dialogi → POST HTTP → Seu sistema (CRM, Slack, planilha, etc.)
+```
+
+Quando um evento acontece (ex: nova mensagem recebida), o Dialogi envia uma requisicao **POST** com os dados do evento para a URL que voce configurou.
+
+## Configurar webhook de saida
+
+<Steps>
+
+### Acesse as configuracoes
+
+No Dialogi, va em **Configuracoes** → **Integracoes** → **Webhooks**.
+
+<Screenshot alt="Tela de configuracao de webhooks de saida" />
+
+### Adicione um webhook
+
+Clique em **"Adicionar webhook"** e preencha:
+
+- **URL**: endereco para onde o Dialogi vai enviar os eventos (ex: `https://seusite.com/api/dialogi-webhook`)
+- **Eventos**: selecione quais eventos voce quer receber
+
+### Teste o webhook
+
+Clique em **"Testar"** para enviar um evento de teste. Verifique se seu sistema recebeu.
+
+### Ative
+
+Ative o webhook. A partir de agora, os eventos selecionados serao enviados automaticamente.
+
+</Steps>
+
+## Eventos disponiveis
+
+### `message.received` — Nova mensagem recebida
+
+Disparado quando um cliente envia uma mensagem.
+
+<ApiEndpoint method="POST" url="/seu-webhook" description="message.received" />
+
+```json
+{
+  "event": "message.received",
+  "timestamp": "2025-03-15T14:30:00Z",
+  "data": {
+    "messageId": "msg_abc123",
+    "conversationId": "conv_xyz789",
+    "contact": {
+      "id": "ct_456",
+      "name": "Maria Silva",
+      "phone": "+5511999887766",
+      "channel": "whatsapp"
+    },
+    "message": {
+      "type": "text",
+      "content": "Ola, gostaria de agendar uma consulta",
+      "timestamp": "2025-03-15T14:30:00Z"
+    }
+  }
+}
+```
+
+### `message.sent` — Mensagem enviada
+
+Disparado quando um atendente (ou IA) envia uma mensagem.
+
+```json
+{
+  "event": "message.sent",
+  "timestamp": "2025-03-15T14:31:00Z",
+  "data": {
+    "messageId": "msg_def456",
+    "conversationId": "conv_xyz789",
+    "sentBy": {
+      "type": "agent",
+      "name": "Ana",
+      "id": "user_123"
+    },
+    "message": {
+      "type": "text",
+      "content": "Ola Maria! Claro, temos horarios disponiveis amanha."
+    }
+  }
+}
+```
+
+### `conversation.assigned` — Conversa atribuida
+
+Disparado quando uma conversa e atribuida a um atendente.
+
+```json
+{
+  "event": "conversation.assigned",
+  "timestamp": "2025-03-15T14:30:15Z",
+  "data": {
+    "conversationId": "conv_xyz789",
+    "contact": {
+      "name": "Maria Silva",
+      "phone": "+5511999887766"
+    },
+    "assignedTo": {
+      "id": "user_123",
+      "name": "Ana"
+    }
+  }
+}
+```
+
+### `conversation.archived` — Conversa arquivada
+
+Disparado quando uma conversa e finalizada/arquivada.
+
+```json
+{
+  "event": "conversation.archived",
+  "timestamp": "2025-03-15T15:00:00Z",
+  "data": {
+    "conversationId": "conv_xyz789",
+    "contact": {
+      "name": "Maria Silva",
+      "phone": "+5511999887766"
+    },
+    "archivedBy": {
+      "id": "user_123",
+      "name": "Ana"
+    },
+    "totalMessages": 12,
+    "duration": "00:30:00"
+  }
+}
+```
+
+### `contact.created` — Novo contato
+
+Disparado quando um contato e criado (primeira mensagem ou via API de Leads).
+
+```json
+{
+  "event": "contact.created",
+  "timestamp": "2025-03-15T14:29:00Z",
+  "data": {
+    "contact": {
+      "id": "ct_456",
+      "name": "Maria Silva",
+      "phone": "+5511999887766",
+      "email": "maria@email.com",
+      "channel": "whatsapp",
+      "source": "organic"
+    }
+  }
+}
+```
+
+## Headers da requisicao
+
+Toda requisicao de webhook inclui estes headers:
+
+| Header | Descricao |
+|---|---|
+| `Content-Type` | `application/json` |
+| `X-Dialogi-Event` | Nome do evento (ex: `message.received`) |
+| `X-Dialogi-Signature` | Assinatura HMAC para validacao (opcional) |
+| `User-Agent` | `Dialogi-Webhook/1.0` |
+
+## Validacao de assinatura
+
+Para garantir que a requisicao realmente veio do Dialogi, valide o header `X-Dialogi-Signature`:
+
+```javascript
+const crypto = require("crypto");
+
+function isValid(payload, signature, secret) {
+  const expected = crypto
+    .createHmac("sha256", secret)
+    .update(JSON.stringify(payload))
+    .digest("hex");
+  return signature === expected;
+}
+```
+
+O `secret` e fornecido na configuracao do webhook no Dialogi.
+
+## Casos de uso
+
+### Sincronizar com CRM
+
+Quando um novo contato e criado no Dialogi, crie automaticamente no seu CRM:
+
+- **`contact.created`** → Criar lead no Pipedrive, HubSpot, RD Station
+- **`conversation.archived`** → Atualizar status do deal no CRM
+
+### Notificar no Slack
+
+Receba notificacoes no Slack quando algo importante acontece:
+
+- **`message.received`** → Notificar canal #atendimento
+- **`conversation.assigned`** → Notificar o atendente no Slack
+
+### Atualizar planilha
+
+Registre todas as conversas em uma planilha Google Sheets:
+
+- **`conversation.archived`** → Adicionar linha com dados da conversa
+- **`contact.created`** → Adicionar contato na planilha de leads
+
+### Automacao com n8n / Make
+
+Use **n8n** ou **Make** (Integromat) como intermediarios:
+
+1. Configure o webhook do n8n como URL do Dialogi
+2. No n8n, processe o evento e direcione para o sistema final
+3. Exemplo: novo contato → cria no CRM + envia email de boas-vindas
+
+## Retentativas
+
+Se o seu servidor nao responder (timeout ou erro 5xx), o Dialogi tenta novamente:
+
+| Tentativa | Atraso |
+|---|---|
+| 1a retentativa | 30 segundos |
+| 2a retentativa | 5 minutos |
+| 3a retentativa | 30 minutos |
+
+Apos 3 tentativas sem sucesso, o evento e descartado. Configure seu servidor para responder com **status 200** rapidamente.
+
+<Callout type="info">
+  Seu endpoint deve responder em ate **5 segundos**. Se voce precisa de processamento demorado, aceite o webhook (200 OK) e processe em background.
+</Callout>
+
+## Proximo passo
+
+Com todas as integracoes configuradas, confira o [FAQ](/faq) para respostas rapidas sobre duvidas comuns.

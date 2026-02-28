@@ -1,0 +1,171 @@
+# Criar Templates na Meta
+
+**Templates** (modelos de mensagem) sao mensagens pre-aprovadas pela Meta que voce pode enviar para clientes que **nao estao em uma conversa ativa**. Sao obrigatorios para iniciar conversas e para campanhas de broadcast.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Por que preciso de templates?
+
+O WhatsApp Business API tem uma regra importante:
+
+- **Dentro da janela de 24h** — voce pode enviar mensagens livres (texto, imagem, etc.) em resposta ao cliente
+- **Fora da janela de 24h** — voce so pode enviar **templates aprovados** pela Meta
+
+Ou seja, para enviar a **primeira mensagem**, lembrete, confirmacao ou campanha, voce precisa de um template.
+
+## Categorias de template
+
+A Meta classifica templates em 3 categorias, e cada uma tem um custo diferente:
+
+| Categoria | Uso | Exemplo |
+|---|---|---|
+| **Utility** (Utilidade) | Confirmacoes, atualizacoes, lembretes | "Seu agendamento foi confirmado para dia 15/03 as 14h" |
+| **Marketing** | Promocoes, ofertas, novidades | "Aproveite 20% de desconto nesta semana!" |
+| **Authentication** | Codigos de verificacao (OTP) | "Seu codigo de verificacao e: 123456" |
+
+<Callout type="info">
+  Templates de **Utility** sao mais baratos e tem taxa de aprovacao mais alta. Comece por eles.
+</Callout>
+
+## Passo a passo para criar um template
+
+<Steps>
+
+### Acesse o WhatsApp Manager
+
+Va ate [business.facebook.com/wa/manage/message-templates](https://business.facebook.com/wa/manage/message-templates) ou, no Meta Business Suite, va em **WhatsApp** → **Gerenciador de contas** → **Templates de mensagem**.
+
+<Screenshot alt="Pagina de templates no WhatsApp Manager" />
+
+### Clique em "Criar template"
+
+Clique no botao **"Criar template"** (Create Template) no canto superior direito.
+
+### Escolha a categoria e o nome
+
+- **Categoria**: selecione Utility, Marketing ou Authentication
+- **Nome do template**: use letras minusculas, sem espacos (use underscores). Ex: `confirmacao_agendamento`
+- **Idioma**: selecione **Portugues (BR)**
+
+<Screenshot alt="Formulario de criacao do template" />
+
+<Callout type="warning">
+  O nome do template nao pode ser alterado depois de criado. Escolha um nome claro e descritivo.
+</Callout>
+
+### Monte o conteudo do template
+
+Um template pode ter:
+
+- **Cabecalho** (Header) — opcional: texto, imagem, video ou documento
+- **Corpo** (Body) — obrigatorio: o texto principal da mensagem
+- **Rodape** (Footer) — opcional: texto pequeno em cinza
+- **Botoes** — opcional: ate 3 botoes (resposta rapida, link ou telefone)
+
+#### Variaveis
+
+Use `{{1}}`, `{{2}}`, `{{3}}` para inserir dados dinamicos:
+
+```
+Ola {{1}}, seu agendamento foi confirmado para {{2}} as {{3}}.
+Qualquer duvida, responda esta mensagem.
+```
+
+Neste exemplo:
+- `{{1}}` = nome do cliente (ex: "Maria")
+- `{{2}}` = data (ex: "15/03")
+- `{{3}}` = horario (ex: "14h00")
+
+<Screenshot alt="Editor de template com variaveis" />
+
+### Adicione exemplos (obrigatorio)
+
+A Meta exige que voce forneca **exemplos reais** de como as variaveis serao preenchidas. Isso ajuda na revisao:
+
+- `{{1}}` = "Maria Silva"
+- `{{2}}` = "15/03/2025"
+- `{{3}}` = "14h00"
+
+### Envie para aprovacao
+
+Clique em **"Enviar"** (Submit). A Meta vai analisar seu template.
+
+**Prazos de aprovacao:**
+
+- Templates simples: **minutos a algumas horas**
+- Templates de marketing: **ate 24 horas**
+- Templates rejeitados: voce recebe o motivo e pode editar e reenviar
+
+</Steps>
+
+## Exemplos prontos por segmento
+
+### Clinica / Consultorio
+
+**Template: `confirmacao_consulta`** (Utility)
+```
+Ola {{1}}, confirmamos sua consulta:
+📅 Data: {{2}}
+🕐 Horario: {{3}}
+📍 Local: {{4}}
+
+Para cancelar ou reagendar, responda esta mensagem.
+```
+
+### Salao de beleza
+
+**Template: `lembrete_horario`** (Utility)
+```
+Oi {{1}}! 💇‍♀️ Lembrando do seu horario amanha:
+📅 {{2}} as {{3}}
+
+Caso precise remarcar, nos avise com antecedencia.
+Te esperamos!
+```
+
+### Loja / E-commerce
+
+**Template: `status_pedido`** (Utility)
+```
+{{1}}, seu pedido #{{2}} foi {{3}}!
+📦 Previsao de entrega: {{4}}
+
+Acompanhe pelo link: {{5}}
+```
+
+### Marketing geral
+
+**Template: `promocao_semanal`** (Marketing)
+```
+{{1}}, temos uma oferta especial para voce! 🎉
+
+{{2}}
+
+Valido ate {{3}}. Responda SIM para aproveitar!
+```
+
+## Motivos comuns de rejeicao
+
+| Motivo | Como resolver |
+|---|---|
+| Conteudo ambiguo | Seja claro e especifico no texto |
+| Falta de exemplos | Forneca exemplos realistas para cada variavel |
+| Conteudo enganoso | Nao prometa o que nao pode cumprir |
+| URL encurtada | Use links completos, nao use bit.ly ou similares |
+| Pressao excessiva | Evite "URGENTE", "ULTIMO DIA", "VAI ACABAR" |
+
+<Callout type="info">
+  Templates de **Utility** tem taxa de aprovacao muito maior que Marketing. Se seu template de marketing foi rejeitado, tente reformular como utilidade (se fizer sentido).
+</Callout>
+
+## Usando templates no Dialogi
+
+Apos aprovados, os templates ficam disponiveis automaticamente no Dialogi:
+
+- **Campanhas** → selecione o template ao criar um broadcast
+- **Inbox** → envie um template quando a janela de 24h expirar
+
+## Proximo passo
+
+Com templates criados e aprovados, voce pode tambem [conectar o Instagram DM](/guia-meta/instagram-api) ao Dialogi para atender mensagens de ambos os canais.

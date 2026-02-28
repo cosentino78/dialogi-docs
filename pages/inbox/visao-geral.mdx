@@ -1,0 +1,112 @@
+# Visao Geral do Inbox
+
+O **Inbox** e o coracao do Dialogi — onde voce e sua equipe atendem todas as conversas de WhatsApp e Instagram em tempo real.
+
+import { Callout } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Layout da tela
+
+O inbox e dividido em tres areas principais:
+
+<Screenshot alt="Layout do inbox com tres areas destacadas" />
+
+| Area | Posicao | O que mostra |
+|---|---|---|
+| **Lista de conversas** | Esquerda | Todas as conversas, com filtros e busca |
+| **Conversa ativa** | Centro | Historico de mensagens da conversa selecionada |
+| **Detalhes do contato** | Direita | Informacoes do contato, tags, notas |
+
+## Sidebar de conversas
+
+A lista de conversas na esquerda mostra:
+
+- **Foto e nome** do contato
+- **Ultima mensagem** — preview da mensagem mais recente
+- **Horario** — quando a ultima mensagem foi recebida
+- **Canal** — icone do WhatsApp ou Instagram
+- **Status** — indicador se a conversa esta aberta, atribuida ou arquivada
+
+### Filtros disponiveis
+
+Voce pode filtrar as conversas por:
+
+| Filtro | Descricao |
+|---|---|
+| **Minhas** | Apenas conversas atribuidas a voce |
+| **Nao atribuidas** | Conversas na fila sem atendente |
+| **Todas** | Todas as conversas abertas |
+| **Arquivadas** | Conversas finalizadas |
+
+<Callout type="info">
+  Use o filtro **"Nao atribuidas"** para ver conversas que estao esperando atendimento. E a fila de trabalho da sua equipe.
+</Callout>
+
+### Busca
+
+Use a barra de busca no topo para encontrar conversas por:
+
+- Nome do contato
+- Numero de telefone
+- Conteudo da mensagem
+
+## Status das conversas
+
+Cada conversa no Dialogi tem um status:
+
+| Status | Significado | Icone |
+|---|---|---|
+| **Aberta** | Conversa ativa, aguardando atendimento | Circulo aberto |
+| **Atribuida** | Conversa designada a um atendente | Nome do atendente |
+| **Pendente** | Conversa aguardando resposta do cliente | Relogio |
+| **Arquivada** | Conversa finalizada | Pasta |
+
+### Fluxo tipico
+
+```
+Nova mensagem → Aberta → Atribuida → Atendimento → Arquivada
+```
+
+## Janela de 24h
+
+Na area de conversa, o Dialogi mostra o **tempo restante da janela de 24h** do WhatsApp:
+
+- **Janela aberta** — voce pode enviar mensagens livres
+- **Janela expirada** — voce so pode enviar templates
+
+<Callout type="warning">
+  Quando a janela expira, um aviso aparece no campo de mensagem. Clique em **"Enviar template"** para reabrir a conversa.
+</Callout>
+
+## Detalhes do contato
+
+O painel direito mostra informacoes do contato:
+
+- **Nome** e **numero** de telefone
+- **Canal** — WhatsApp ou Instagram
+- **Tags** — etiquetas para organizar (ex: "VIP", "Novo Lead", "Suporte")
+- **Notas internas** — anotacoes visiveis apenas para a equipe
+- **Historico** — conversas anteriores com esse contato
+
+## Notificacoes
+
+O Dialogi notifica voce sobre novas mensagens de diferentes formas:
+
+- **Som** — alerta sonoro ao receber mensagem
+- **Badge** — contador no icone do Inbox
+- **Notificacao do navegador** — push notification no desktop
+
+<Callout type="info">
+  Para receber notificacoes do navegador, permita as notificacoes quando o Dialogi solicitar. Voce pode ajustar isso nas configuracoes do navegador.
+</Callout>
+
+## Atalhos do teclado
+
+| Atalho | Acao |
+|---|---|
+| **Enter** | Enviar mensagem |
+| **Shift + Enter** | Nova linha (sem enviar) |
+
+## Proximo passo
+
+Agora que voce conhece o layout, aprenda o [fluxo completo de atendimento](/inbox/atender-conversas) — desde assumir uma conversa ate arquiva-la.

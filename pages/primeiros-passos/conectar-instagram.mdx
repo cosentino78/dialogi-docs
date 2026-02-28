@@ -1,0 +1,122 @@
+# Conectar Instagram
+
+Alem do WhatsApp, o Dialogi tambem recebe mensagens diretas (DMs) do Instagram. Tudo no mesmo painel, sem precisar abrir o app do Instagram.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Pre-requisitos
+
+Antes de conectar o Instagram ao Dialogi, voce precisa:
+
+- **Conta Instagram Business** (ou Creator) — contas pessoais nao funcionam
+- **Pagina do Facebook vinculada** ao Instagram Business
+- **Ser administrador** da pagina do Facebook e da conta Meta Business
+
+<Callout type="info">
+  Para converter sua conta Instagram para Business, va em: **Instagram** → **Configuracoes** → **Conta** → **Mudar para conta profissional**. Depois, vincule a uma pagina do Facebook.
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse as configuracoes de canais
+
+No Dialogi, va em **Configuracoes** → **Canais** → **Instagram**.
+
+<Screenshot alt="Menu Configuracoes > Canais > Instagram" />
+
+### Clique em "Conectar Instagram"
+
+Clique no botao **"Conectar"**. O Dialogi vai redirecionar voce para a autorizacao do Facebook.
+
+### Faca login no Facebook
+
+Use a conta do Facebook que e **administradora** da pagina vinculada ao Instagram Business.
+
+<Callout type="warning">
+  Se voce tem mais de uma conta Facebook, certifique-se de estar logado na conta correta antes de clicar em "Conectar".
+</Callout>
+
+### Autorize as permissoes
+
+Na tela de autorizacao, o Facebook vai listar as permissoes que o Dialogi precisa:
+
+- Gerenciar mensagens do Instagram
+- Acessar o perfil Business do Instagram
+- Ler e responder DMs
+
+Clique em **"Continuar"** e depois em **"Concluir"**.
+
+<Screenshot alt="Tela de autorizacao do Facebook para o Dialogi" />
+
+### Selecione a pagina e o Instagram
+
+Se voce tem mais de uma pagina ou conta Instagram, selecione as corretas.
+
+### Conexao concluida!
+
+O Dialogi vai confirmar que a conexao foi feita com sucesso. O status mostrara **"Conectado"** com um indicador verde.
+
+<Screenshot alt="Status Conectado do Instagram no Dialogi" />
+
+</Steps>
+
+## Testando a conexao
+
+Para confirmar que tudo funciona:
+
+1. Abra o Instagram de uma **outra conta** (nao a conta Business)
+2. Envie uma DM para a conta Business conectada
+3. Abra o Dialogi → **Inbox**
+4. A mensagem deve aparecer em poucos segundos com o icone do Instagram
+
+## O que funciona no Instagram
+
+| Funcionalidade | Disponivel |
+|---|---|
+| Receber mensagens de texto | Sim |
+| Receber fotos e videos | Sim |
+| Receber mencoes em stories | Sim |
+| Responder mensagens | Sim |
+| Enviar imagens | Sim |
+| Iniciar conversas (proativo) | Nao |
+| Enviar templates | Nao |
+
+<Callout type="info">
+  No Instagram, voce **nao pode** iniciar conversas — o cliente sempre precisa enviar a primeira mensagem. Isso e uma limitacao da API da Meta, nao do Dialogi.
+</Callout>
+
+## Identificando o canal na inbox
+
+Na inbox do Dialogi, cada conversa mostra o icone do canal de origem:
+
+- 💬 **WhatsApp** — icone verde do WhatsApp
+- 📷 **Instagram** — icone do Instagram
+
+Voce pode filtrar a inbox por canal para ver apenas conversas de um canal especifico.
+
+## Problemas comuns
+
+### "Instagram nao aparece na autorizacao"
+
+- Confirme que o Instagram esta como **Business** (nao pessoal)
+- Confirme que o Instagram esta **vinculado a uma pagina do Facebook**
+- Tente desvincular e vincular novamente o Instagram a pagina
+
+### "Autorizacao falhou"
+
+- Verifique se voce esta logado na conta do Facebook **correta** (administradora da pagina)
+- Limpe os cookies do navegador e tente novamente
+- Tente em uma janela anonima/privada
+
+### "Mensagens nao chegam"
+
+- Confirme que o status esta **"Conectado"** nas configuracoes
+- Envie a DM de **outra conta** Instagram (nao da conta Business)
+- Aguarde alguns segundos — pode haver um pequeno delay
+
+## Proximo passo
+
+Com WhatsApp e Instagram conectados, hora de [enviar sua primeira mensagem](/primeiros-passos/primeira-mensagem) para testar que tudo funciona!

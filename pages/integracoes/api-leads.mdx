@@ -1,0 +1,179 @@
+# API de Leads
+
+Receba leads de qualquer formulario, landing page ou sistema externo via **API REST**. Quando um lead chega pela API, o Dialogi cria o contato automaticamente e pode iniciar uma conversa via template.
+
+import { Callout, Steps } from 'nextra/components'
+import { ApiEndpoint } from '../../components/ApiEndpoint'
+
+## Endpoint
+
+<ApiEndpoint method="POST" url="/api/leads" description="Criar novo lead" />
+
+**URL completa:** `https://dialogi.com.br/api/leads`
+
+## Autenticacao
+
+Todas as requisicoes precisam de uma **API Key** no header:
+
+```
+Authorization: Bearer SUA_API_KEY_AQUI
+```
+
+### Onde encontrar a API Key
+
+1. No Dialogi, va em **Configuracoes** → **Integracoes** → **API**
+2. Copie a **API Key** exibida
+3. Use no header `Authorization` de todas as requisicoes
+
+<Callout type="warning">
+  A API Key e confidencial. Nunca exponha em codigo frontend (JavaScript no navegador). Use apenas em servidores backend, automacoes ou ferramentas server-side.
+</Callout>
+
+## Campos do payload
+
+| Campo | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `name` | string | Sim | Nome do lead |
+| `phone` | string | Sim | Telefone com DDI e DDD (ex: "+5511999887766") |
+| `email` | string | Nao | Email do lead |
+| `tags` | string[] | Nao | Tags para organizar (ex: ["Site", "Orcamento"]) |
+| `message` | string | Nao | Mensagem inicial ou contexto do lead |
+| `source` | string | Nao | Origem do lead (ex: "landing-page", "formulario-site") |
+
+## Exemplos de integracao
+
+### cURL
+
+```bash
+curl -X POST https://dialogi.com.br/api/leads \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_API_KEY_AQUI" \
+  -d '{
+    "name": "Maria Silva",
+    "phone": "+5511999887766",
+    "email": "maria@email.com",
+    "tags": ["Site", "Orcamento"],
+    "message": "Interesse em plano empresarial",
+    "source": "landing-page"
+  }'
+```
+
+### JavaScript (fetch)
+
+```javascript
+const response = await fetch("https://dialogi.com.br/api/leads", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_API_KEY_AQUI",
+  },
+  body: JSON.stringify({
+    name: "Maria Silva",
+    phone: "+5511999887766",
+    email: "maria@email.com",
+    tags: ["Site", "Orcamento"],
+    message: "Interesse em plano empresarial",
+    source: "landing-page",
+  }),
+});
+
+const data = await response.json();
+console.log(data);
+```
+
+### n8n
+
+1. Adicione um node **HTTP Request**
+2. Configure:
+   - **Method**: POST
+   - **URL**: `https://dialogi.com.br/api/leads`
+   - **Authentication**: Header Auth
+   - **Header Name**: `Authorization`
+   - **Header Value**: `Bearer SUA_API_KEY_AQUI`
+   - **Body**: JSON com os campos do lead
+
+### Zapier
+
+1. Crie um novo Zap
+2. Configure o **Trigger** (ex: novo formulario no Google Forms)
+3. Adicione a **Action**: Webhooks by Zapier → POST
+4. Configure:
+   - **URL**: `https://dialogi.com.br/api/leads`
+   - **Payload Type**: JSON
+   - **Headers**: `Authorization: Bearer SUA_API_KEY_AQUI`
+   - **Data**: mapeie os campos do formulario para `name`, `phone`, `email`
+
+### Formulario WordPress
+
+Usando **Contact Form 7** com o plugin **CF7 to Webhook**:
+
+1. Instale o plugin "CF7 to Webhook"
+2. No formulario, va em **Integracoes** → **Webhook**
+3. Configure:
+   - **URL**: `https://dialogi.com.br/api/leads`
+   - **Method**: POST
+   - **Headers**: `Authorization: Bearer SUA_API_KEY_AQUI`
+4. Mapeie os campos do formulario para os campos da API
+
+## Respostas da API
+
+### Sucesso (201)
+
+```json
+{
+  "success": true,
+  "lead": {
+    "id": "clx1234567890",
+    "name": "Maria Silva",
+    "phone": "+5511999887766",
+    "email": "maria@email.com",
+    "tags": ["Site", "Orcamento"],
+    "createdAt": "2025-03-15T14:30:00Z"
+  }
+}
+```
+
+### Erro de validacao (400)
+
+```json
+{
+  "success": false,
+  "error": "Campo 'phone' e obrigatorio"
+}
+```
+
+### Erro de autenticacao (401)
+
+```json
+{
+  "success": false,
+  "error": "API Key invalida ou ausente"
+}
+```
+
+## Formato do telefone
+
+O campo `phone` deve seguir o formato internacional:
+
+| Formato | Exemplo | Valido? |
+|---|---|---|
+| `+5511999887766` | Com DDI + DDD + numero | ✅ Sim |
+| `5511999887766` | Sem o + | ✅ Sim (aceito) |
+| `11999887766` | Sem DDI | ❌ Nao |
+| `999887766` | Sem DDI e DDD | ❌ Nao |
+
+<Callout type="info">
+  Sempre inclua o codigo do pais (+55 para Brasil) e o DDD. O Dialogi tenta normalizar formatos incorretos, mas o ideal e enviar no formato completo.
+</Callout>
+
+## Limites
+
+| Limite | Valor |
+|---|---|
+| Requisicoes por minuto | 60 |
+| Tamanho do payload | 10 KB |
+| Tags por lead | 10 |
+
+## Proximo passo
+
+Adicione um [Widget WhatsApp](/integracoes/widget-whatsapp) ao seu site para capturar leads diretamente pelo botao flutuante.

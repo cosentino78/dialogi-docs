@@ -1,0 +1,123 @@
+# Quality Rating
+
+O **Quality Rating** (classificacao de qualidade) e a nota que a Meta da para o seu numero do WhatsApp com base na experiencia dos seus clientes. Ele impacta diretamente seus [limites de envio](/guia-meta/limites-tiers) e pode resultar em restricoes.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## As tres cores
+
+| Cor | Significado | Impacto |
+|---|---|---|
+| 🟢 **Verde** (High) | Qualidade excelente | Pode subir de tier, sem restricoes |
+| 🟡 **Amarelo** (Medium) | Qualidade aceitavel | Ainda pode subir de tier, mas monitorado |
+| 🔴 **Vermelho** (Low) | Qualidade ruim | Restricoes ativas, pode ser rebaixado |
+
+<Callout type="warning">
+  Se seu Quality Rating ficar **vermelho**, a Meta pode restringir seu numero a apenas **250 conversas/24h** — independente do tier atual. Evite a todo custo.
+</Callout>
+
+## O que afeta o Quality Rating
+
+A Meta calcula a qualidade com base em sinais dos **ultimos 7 dias**:
+
+### Fatores negativos (pioram a nota)
+
+- **Bloqueios** — quando o cliente bloqueia seu numero
+- **Denuncias** — quando o cliente reporta sua mensagem como spam
+- **"Parar de receber"** — quando o cliente responde pedindo para parar (ex: "SAIR", "PARAR")
+- **Mensagens nao lidas** — taxa alta de mensagens ignoradas
+- **Templates rejeitados** — templates que a Meta recusou repetidamente
+
+### Fatores positivos (melhoram a nota)
+
+- **Respostas dos clientes** — quando clientes respondem suas mensagens
+- **Conversas engajadas** — troca de mensagens de ida e volta
+- **Baixa taxa de bloqueio** — poucos bloqueios em relacao ao volume
+
+## Como verificar seu Quality Rating
+
+<Steps>
+
+### Acesse o WhatsApp Manager
+
+Va ate [business.facebook.com/wa/manage/phone-numbers](https://business.facebook.com/wa/manage/phone-numbers).
+
+### Veja a coluna "Quality Rating"
+
+Na lista de numeros, a coluna **"Quality Rating"** mostra a cor atual do seu numero.
+
+<Screenshot alt="Coluna Quality Rating no WhatsApp Manager" />
+
+### Verifique o status dos templates
+
+Va em **Templates de mensagem** e veja o status de qualidade de cada template individualmente. Templates com qualidade baixa podem ser pausados pela Meta.
+
+</Steps>
+
+## Boas praticas para manter a qualidade verde
+
+### 1. Envie apenas para quem quer receber
+
+- Envie templates apenas para clientes que ja interagiram com sua empresa
+- Nunca compre listas de contatos
+- Sempre ofereca uma forma de sair (ex: "Responda SAIR para nao receber mais")
+
+### 2. Personalize as mensagens
+
+- Use o nome do cliente nas variaveis
+- Envie conteudo relevante para o contexto (confirmacao apos agendamento, status apos compra)
+- Evite mensagens genericas tipo "Oi, tudo bem?"
+
+### 3. Respeite horarios
+
+- Envie mensagens em horario comercial (8h-20h)
+- Evite finais de semana para mensagens de marketing
+- Considere o fuso horario do cliente
+
+### 4. Nao exagere na frequencia
+
+- Nao envie mais de **1-2 mensagens por semana** para o mesmo contato (marketing)
+- Mensagens de utilidade (confirmacoes, lembretes) podem ser mais frequentes
+- Se o cliente nao responde, nao insista
+
+### 5. Monitore os indicadores
+
+Fique de olho em:
+- **Taxa de bloqueio** — ideal abaixo de 2%
+- **Taxa de resposta** — ideal acima de 30%
+- **Taxa de denuncia** — ideal 0%
+
+<Callout type="info">
+  Se notar que a qualidade esta caindo para amarelo, **reduza o volume imediatamente** e revise suas mensagens antes que chegue ao vermelho.
+</Callout>
+
+## O que fazer se a qualidade cair
+
+### Amarelo → Acoes preventivas
+
+1. Reduza o volume de envio em 50%
+2. Revise os templates que tem menor engajamento
+3. Remova contatos que nao interagem ha mais de 30 dias
+4. Pause campanhas de marketing e foque em utilidade
+
+### Vermelho → Acoes urgentes
+
+1. **Pare** todas as campanhas de marketing imediatamente
+2. Envie apenas templates de utilidade (confirmacoes, lembretes)
+3. Revise e remova contatos que bloquearam ou denunciaram
+4. Aguarde 7 dias para a Meta reavaliar a qualidade
+5. Retome os envios gradualmente quando voltar para amarelo/verde
+
+## Quality Rating por template
+
+A Meta tambem avalia a qualidade de cada template individualmente. Templates com qualidade baixa podem ser:
+
+- **Pausados** — a Meta desativa o template temporariamente
+- **Desabilitados** — o template e permanentemente desativado
+
+Para evitar isso, monitore a qualidade de cada template e desative proativamente aqueles que geram muitos bloqueios.
+
+## Proximo passo
+
+Para adicionar credibilidade ao seu numero, saiba como solicitar o [Selo Verde (Green Badge)](/guia-meta/green-badge) no WhatsApp.

@@ -1,0 +1,172 @@
+# Regras de Delegacao
+
+As **regras de delegacao** definem quando a IA deve parar de responder e transferir a conversa para um atendente humano. Esse equilibrio e essencial: a IA resolve o simples, humanos cuidam do complexo.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Por que delegar?
+
+A IA e excelente para:
+- Responder perguntas frequentes (horario, preco, endereco)
+- Coletar informacoes iniciais do cliente
+- Atender fora do horario comercial
+
+Mas a IA **nao deve** tentar resolver:
+- Reclamacoes e insatisfacao
+- Negociacoes complexas
+- Situacoes emocionais
+- Decisoes que exigem julgamento humano
+
+<Callout type="info">
+  Um bom atendimento automatico sabe quando parar. O cliente que pede para falar com humano e e ignorado fica mais frustrado do que se nunca tivesse falado com IA.
+</Callout>
+
+## Configurando as regras
+
+<Steps>
+
+### Acesse as configuracoes de IA
+
+No Dialogi, va em **Configuracoes** → **Inteligencia Artificial**.
+
+### Configure as regras de delegacao
+
+Na secao **"Delegacao"**, voce pode definir:
+
+<Screenshot alt="Secao de regras de delegacao nas configuracoes" />
+
+### Defina os gatilhos
+
+Configure em quais situacoes a IA deve transferir para humano.
+
+</Steps>
+
+## Tipos de gatilho
+
+### 1. Palavra-chave
+
+A IA transfere quando o cliente usa palavras especificas:
+
+| Palavras | Intencao |
+|---|---|
+| "atendente", "humano", "pessoa" | Quer falar com alguem real |
+| "reclamacao", "problema", "insatisfeito" | Esta com problema |
+| "cancelar", "devolver", "reembolso" | Quer cancelar algo |
+| "gerente", "supervisor", "responsavel" | Quer escalar |
+
+### 2. Sentimento negativo
+
+A IA detecta frustacao ou raiva no tom da mensagem e transfere automaticamente. Exemplos:
+
+- "Ja e a terceira vez que pergunto!"
+- "Esse atendimento e pessimo"
+- "Voces sao uma vergonha"
+
+### 3. Limite de turnos
+
+A IA transfere apos um numero maximo de trocas de mensagem. Por exemplo, se apos **5 turnos** a IA nao conseguiu resolver, provavelmente precisa de um humano.
+
+| Configuracao | Quando usar |
+|---|---|
+| **3 turnos** | Atendimento rapido (consultorio, agendamento) |
+| **5 turnos** | Atendimento medio (loja, servicos) |
+| **10 turnos** | Atendimento detalhado (suporte tecnico) |
+
+### 4. Fora do escopo
+
+Configure no [system prompt](/ia/system-prompt) os temas que a IA nao deve abordar. Quando o cliente perguntar algo fora do escopo, a IA transfere automaticamente:
+
+```
+Se o cliente perguntar sobre algo que voce nao sabe ou que nao esta
+nas suas instrucoes, diga: "Entendi! Vou transferir voce para um
+atendente que pode ajudar melhor com isso. Um momento!"
+E transfira a conversa para humano.
+```
+
+## O que acontece na transferencia
+
+Quando a IA delega para um humano:
+
+1. A **IA para de responder** automaticamente
+2. A conversa aparece na **fila de "Nao atribuidas"** do inbox
+3. O atendente pode ver todo o **historico** da conversa com a IA
+4. O atendente assume e continua o atendimento
+
+<Callout type="info">
+  O atendente ve todas as mensagens anteriores, incluindo as respostas da IA. Ele nao precisa pedir ao cliente para repetir tudo.
+</Callout>
+
+## Mensagem de transferencia
+
+Configure a mensagem que a IA envia ao transferir:
+
+**Exemplo padrao:**
+```
+Entendi! Vou transferir voce para um de nossos atendentes.
+Ele(a) ja tem acesso ao nosso historico de conversa.
+Aguarde um momento, por favor! 😊
+```
+
+**Exemplo fora do horario:**
+```
+Nosso horario de atendimento humano e de segunda a sexta, 8h as 18h.
+Vou registrar sua solicitacao e um atendente vai te responder
+assim que estiver disponivel. Obrigado pela paciencia! 🙏
+```
+
+## Fora do horario comercial
+
+Configure o comportamento da IA quando nao ha atendentes disponiveis:
+
+| Opcao | Comportamento |
+|---|---|
+| **IA responde tudo** | A IA continua respondendo, sem limite |
+| **IA responde + avisa** | A IA responde e informa que humano responde depois |
+| **Apenas coleta dados** | A IA pega nome e assunto, humano retorna depois |
+
+<Callout type="info">
+  A opcao mais comum e **"IA responde + avisa"** — o cliente recebe uma resposta imediata e sabe que um humano vai complementar se necessario.
+</Callout>
+
+## Boas praticas
+
+### Nao torne a delegacao dificil
+
+```
+❌ A IA insiste em resolver mesmo quando o cliente pede humano
+✅ Ao primeiro pedido de humano, a IA transfere imediatamente
+```
+
+### Contextualize para o humano
+
+A IA pode adicionar uma nota interna ao transferir:
+
+```
+[Nota para atendente] Cliente perguntou sobre cancelamento de
+assinatura. Motivo: insatisfacao com o preco. Demonstrou frustacao.
+```
+
+### Monitore e ajuste
+
+Revise semanalmente:
+
+- Quantas conversas a IA resolveu sozinha?
+- Quantas foram transferidas?
+- Os motivos de transferencia sao validos?
+- Algum cliente reclamou da IA?
+
+Se muitas conversas estao sendo transferidas por um tema especifico, atualize o [system prompt](/ia/system-prompt) para cobrir esse tema.
+
+## Metricas ideais
+
+| Metrica | Meta ideal |
+|---|---|
+| **Taxa de resolucao da IA** | 60-80% (a IA resolve sem humano) |
+| **Taxa de delegacao** | 20-40% |
+| **Tempo ate delegacao** | Menos de 2 minutos |
+| **Satisfacao pos-delegacao** | Alta (humano resolve rapidamente) |
+
+## Proximo passo
+
+Com a IA configurada e as regras de delegacao definidas, explore as [integracoes](/integracoes/api-leads) do Dialogi para conectar com outros sistemas.

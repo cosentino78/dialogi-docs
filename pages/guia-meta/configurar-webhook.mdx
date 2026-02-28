@@ -1,0 +1,128 @@
+# Configurar Webhook
+
+O **webhook** e o endereco (URL) para onde a Meta envia todas as mensagens que seus clientes mandam pelo WhatsApp. Sem ele configurado, o Dialogi nao recebe nenhuma mensagem.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Como funciona
+
+```
+Cliente envia mensagem → WhatsApp → Meta → Webhook → Dialogi
+```
+
+Quando alguem manda uma mensagem para seu numero do WhatsApp, a Meta "empurra" essa mensagem para a URL do webhook configurada. O Dialogi recebe e exibe na inbox em tempo real.
+
+## Dados necessarios
+
+Voce vai precisar de duas informacoes do Dialogi:
+
+| Campo | Valor |
+|---|---|
+| **URL do Webhook** | `https://dialogi.com.br/api/webhook/whatsapp` |
+| **Token de verificacao** | Disponivel no painel do Dialogi em Configuracoes → Canais → WhatsApp |
+
+<Callout type="info">
+  A URL do webhook e a mesma para todos os clientes do Dialogi. O token de verificacao e unico para cada conta e serve para a Meta confirmar que o webhook e legitimo.
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse o painel do App
+
+Va ate [developers.facebook.com/apps](https://developers.facebook.com/apps) e clique no seu app.
+
+### Va ate a configuracao do WhatsApp
+
+No menu lateral, clique em **WhatsApp** → **Configuracao** (Configuration).
+
+<Screenshot alt="Menu WhatsApp > Configuracao" />
+
+### Configure o Webhook
+
+Na secao **Webhook**, clique em **"Editar"** (Edit) ou **"Configurar"**.
+
+Preencha:
+
+- **URL de callback**: `https://dialogi.com.br/api/webhook/whatsapp`
+- **Token de verificacao**: copie do Dialogi (Configuracoes → Canais → WhatsApp)
+
+<Screenshot alt="Campos URL de callback e Token de verificacao" />
+
+### Clique em "Verificar e salvar"
+
+A Meta vai enviar uma requisicao para a URL do webhook para confirmar que ela esta funcionando. Se tudo estiver certo, voce vera a mensagem de sucesso.
+
+<Callout type="warning">
+  Se a verificacao falhar, verifique:
+  - Se a URL esta exatamente como mostrado acima (sem espacos, sem barra extra no final)
+  - Se o token de verificacao esta correto (copie novamente do Dialogi)
+  - Se o Dialogi esta online e acessivel
+</Callout>
+
+### Inscreva-se nos campos do webhook
+
+Apos verificar o webhook, voce precisa marcar quais **eventos** a Meta deve enviar. Clique em **"Gerenciar"** (Manage) e marque:
+
+- **`messages`** — mensagens recebidas (obrigatorio)
+- **`messaging_postbacks`** — respostas de botoes
+
+<Screenshot alt="Campos de inscricao do webhook com messages marcado" />
+
+<Callout type="info">
+  No minimo, marque **`messages`**. Sem isso, o Dialogi nao recebe nenhuma mensagem.
+</Callout>
+
+</Steps>
+
+## Testando o webhook
+
+Para confirmar que tudo funciona:
+
+1. Envie uma mensagem de teste para o seu numero do WhatsApp
+2. Abra o Dialogi → **Inbox**
+3. A mensagem deve aparecer em segundos
+
+Se nao apareceu, verifique:
+
+- O webhook esta verificado (status verde na Meta)
+- O campo `messages` esta inscrito
+- O token permanente esta configurado no Dialogi
+- O numero esta registrado corretamente
+
+## Webhook do Instagram
+
+Se voce tambem usa o Instagram, o webhook do Instagram e configurado separadamente:
+
+| Canal | URL do Webhook |
+|---|---|
+| **WhatsApp** | `https://dialogi.com.br/api/webhook/whatsapp` |
+| **Instagram** | `https://dialogi.com.br/api/webhook/instagram` |
+
+Veja mais detalhes em [Conectar Instagram DM](/guia-meta/instagram-api).
+
+## Problemas comuns
+
+### "Erro ao verificar o webhook"
+
+- Verifique se a URL esta correta: `https://dialogi.com.br/api/webhook/whatsapp`
+- Confirme que o token de verificacao e o mesmo que aparece no Dialogi
+- Certifique-se de que o Dialogi esta rodando e acessivel publicamente
+
+### "Webhook verificado, mas mensagens nao chegam"
+
+- Verifique se voce se inscreveu no campo **`messages`**
+- Confirme que o [token permanente](/guia-meta/gerar-token) esta configurado no Dialogi
+- Teste enviando uma mensagem do seu celular pessoal para o numero registrado
+
+### "Recebo mensagens com atraso"
+
+- Atrasos de 1-3 segundos sao normais
+- Atrasos maiores podem indicar problemas de rede no servidor do Dialogi
+- Verifique os logs do servidor se o atraso persistir
+
+## Proximo passo
+
+Com o webhook configurado, seu WhatsApp ja esta 100% integrado ao Dialogi! Agora voce pode [criar templates de mensagem](/guia-meta/templates-meta) para enviar mensagens proativas aos seus clientes.

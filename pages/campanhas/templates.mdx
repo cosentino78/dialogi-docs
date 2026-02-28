@@ -1,0 +1,111 @@
+# Templates de Mensagem
+
+Templates sao mensagens pre-aprovadas pela Meta que voce usa para iniciar conversas e enviar campanhas no WhatsApp. No Dialogi, voce gerencia e envia templates diretamente pelo painel.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="info">
+  Os templates precisam ser **criados e aprovados na Meta** antes de usar no Dialogi. Para o passo a passo de criacao, veja [Criar Templates na Meta](/guia-meta/templates-meta).
+</Callout>
+
+## Quando usar templates?
+
+No WhatsApp Business API, existem duas situacoes:
+
+| Situacao | O que voce pode enviar |
+|---|---|
+| **Dentro da janela de 24h** | Qualquer mensagem livre (texto, imagem, audio, etc.) |
+| **Fora da janela de 24h** | Apenas templates aprovados pela Meta |
+
+A **janela de 24h** abre quando o cliente envia uma mensagem. Se passarem 24 horas sem interacao, a janela fecha e voce so pode reabri-la com um template.
+
+### Usos comuns de templates
+
+- **Lembrete de agendamento** — "Ola Maria, seu horario e amanha as 14h"
+- **Confirmacao de pedido** — "Seu pedido #1234 foi confirmado"
+- **Follow-up** — "Oi Joao, tudo certo com o orcamento que enviamos?"
+- **Campanha** — "Novidade! 20% de desconto nesta semana"
+
+## Visualizando templates no Dialogi
+
+Os templates aprovados na Meta aparecem automaticamente no Dialogi.
+
+<Steps>
+
+### Acesse a area de templates
+
+No menu lateral, va em **Campanhas** → **Templates**.
+
+<Screenshot alt="Lista de templates no Dialogi" />
+
+### Veja o status de cada template
+
+Cada template mostra:
+
+- **Nome** — identificador do template (ex: `confirmacao_agendamento`)
+- **Categoria** — Utility, Marketing ou Authentication
+- **Status** — Aprovado, Pendente ou Rejeitado
+- **Idioma** — Portugues (BR) ou outros
+
+</Steps>
+
+## Enviando um template pela inbox
+
+Quando a janela de 24h expira, voce pode reabrir a conversa com um template:
+
+<Steps>
+
+### Abra a conversa
+
+Na inbox, clique na conversa onde a janela expirou. Voce vera um aviso indicando que so templates podem ser enviados.
+
+### Clique em "Enviar template"
+
+Clique no botao **"Enviar template"** que aparece no campo de mensagem.
+
+### Selecione o template
+
+Escolha o template desejado da lista. Se o template tiver variaveis (`{{1}}`, `{{2}}`), preencha os valores.
+
+<Screenshot alt="Selecao de template na inbox com variaveis" />
+
+### Envie
+
+Clique em **"Enviar"**. O template sera enviado ao cliente e a janela de 24h reabrira.
+
+</Steps>
+
+## Categorias e custos
+
+A Meta cobra por conversa iniciada, e o custo varia por categoria:
+
+| Categoria | Custo relativo | Quando usar |
+|---|---|---|
+| **Utility** | Mais barato | Confirmacoes, atualizacoes, lembretes |
+| **Marketing** | Mais caro | Promocoes, ofertas, campanhas |
+| **Authentication** | Mais barato | Codigos OTP, verificacao |
+| **Service** | Gratis (dentro da janela) | Respostas dentro das 24h |
+
+<Callout type="info">
+  Prefira templates de **Utility** sempre que possivel — sao mais baratos e tem taxa de aprovacao maior. Use Marketing apenas para promocoes e ofertas reais.
+</Callout>
+
+## Boas praticas
+
+- **Crie templates variaveis** — use `{{1}}`, `{{2}}` para personalizar (nome, data, valor)
+- **Mantenha curto** — mensagens longas tem menor taxa de leitura
+- **Inclua call-to-action** — diga ao cliente o que fazer ("responda SIM", "clique aqui")
+- **Teste antes** — envie para seu proprio numero antes de usar em campanhas
+- **Monitore a qualidade** — templates com muitos bloqueios podem ser pausados pela Meta
+
+## Sincronizacao com a Meta
+
+O Dialogi sincroniza os templates automaticamente. Se voce criar um novo template na Meta, ele aparecera no Dialogi em alguns minutos. Para forcar a sincronizacao:
+
+1. Va em **Campanhas** → **Templates**
+2. Clique em **"Sincronizar"** ou **"Atualizar lista"**
+
+## Proximo passo
+
+Com templates prontos, voce pode [criar broadcasts](/campanhas/broadcast) para enviar mensagens em massa para seus contatos.

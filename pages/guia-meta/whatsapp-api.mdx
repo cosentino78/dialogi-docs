@@ -1,0 +1,84 @@
+# Adicionar WhatsApp ao App
+
+Agora que voce tem um app criado no Meta for Developers, o proximo passo e **adicionar o produto WhatsApp** a esse app. E aqui que a API do WhatsApp "ganha vida".
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Pre-requisitos
+
+- [App criado no Meta for Developers](/guia-meta/criar-app)
+- [Conta Business vinculada](/guia-meta/conta-business)
+
+## Passo a passo
+
+<Steps>
+
+### Acesse o Painel do App
+
+Va ate [developers.facebook.com/apps](https://developers.facebook.com/apps) e clique no app que voce criou.
+
+### Adicione o produto WhatsApp
+
+No menu lateral, clique em **"Adicionar produtos"** (Add Products) ou role ate a secao de produtos no painel. Encontre **"WhatsApp"** e clique em **"Configurar"** (Set Up).
+
+<Screenshot alt="Botao Configurar WhatsApp no painel de produtos" />
+
+### Selecione a conta Business
+
+A Meta vai pedir que voce vincule uma **conta WhatsApp Business**. Selecione a sua conta Business existente ou crie uma nova.
+
+<Callout type="info">
+  A "conta WhatsApp Business" (WABA) e diferente da "conta Meta Business". A WABA e especifica do WhatsApp e sera criada automaticamente quando voce configurar o produto.
+</Callout>
+
+### Acesse o painel do WhatsApp
+
+Apos configurar, voce vera um novo item **"WhatsApp"** no menu lateral do app. Clique nele para acessar o painel.
+
+<Screenshot alt="Menu lateral com WhatsApp adicionado" />
+
+</Steps>
+
+## IDs que voce vai encontrar
+
+Apos adicionar o WhatsApp, a Meta gera varios IDs. Voce vai precisar de dois deles para conectar ao Dialogi:
+
+| ID | Onde encontrar | Para que serve |
+|---|---|---|
+| **Phone Number ID** | WhatsApp > Configuracao da API | Identifica seu numero de telefone na API |
+| **WhatsApp Business Account ID** | WhatsApp > Configuracao da API | Identifica sua conta WABA |
+
+<Screenshot alt="IDs visiveis no painel de configuracao da API do WhatsApp" />
+
+### Como encontrar os IDs
+
+1. No menu lateral do app, clique em **WhatsApp** → **Configuracao da API** (API Setup)
+2. Os IDs aparecem na secao superior da pagina
+3. Copie e guarde ambos — voce vai inserir esses valores no Dialogi
+
+<Callout type="warning">
+  O **Phone Number ID** so aparece depois que voce [registrar um numero de telefone](/guia-meta/registrar-numero). Ate la, voce vera apenas o numero de teste da Meta.
+</Callout>
+
+## Numero de teste vs. Numero real
+
+Ao adicionar o WhatsApp, a Meta ja fornece um **numero de teste** para voce experimentar a API. Com ele voce pode:
+
+- Enviar mensagens para ate **5 numeros** cadastrados manualmente
+- Testar templates e webhooks
+- Verificar se a integracao funciona
+
+Para enviar para qualquer pessoa, voce precisa [registrar seu proprio numero](/guia-meta/registrar-numero).
+
+## Permissoes do App
+
+Para que o Dialogi funcione corretamente, seu app precisa da permissao **`whatsapp_business_messaging`**. Normalmente ela ja vem habilitada ao adicionar o produto WhatsApp, mas confira:
+
+1. No menu lateral, va em **Funcoes do App** (App Roles) ou **Permissoes**
+2. Procure por `whatsapp_business_messaging`
+3. Se nao estiver ativa, solicite acesso
+
+## Proximo passo
+
+Agora voce precisa [registrar seu numero de telefone](/guia-meta/registrar-numero) real na API do WhatsApp.

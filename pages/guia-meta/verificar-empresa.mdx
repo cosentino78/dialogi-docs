@@ -1,0 +1,111 @@
+# Verificar Empresa
+
+A **verificacao de empresa** e um processo obrigatorio da Meta que confirma que sua empresa e real e legitima. Sem ela, voce fica limitado a enviar mensagens apenas para numeros de teste.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="warning">
+  A verificacao pode levar de **1 a 5 dias uteis**. Comece esse processo o mais cedo possivel para nao atrasar sua operacao.
+</Callout>
+
+## Por que verificar?
+
+Sem a verificacao, sua conta fica no modo **sandbox** (testes), com estas limitacoes:
+
+| Sem verificacao | Com verificacao |
+|---|---|
+| Apenas 5 numeros de teste | Envio para qualquer numero |
+| Sem templates aprovados para producao | Templates aprovados em ate 24h |
+| Sem acesso a tiers maiores | Ate 100.000+ mensagens/dia |
+| Sem selo verde disponivel | Pode solicitar selo verde |
+
+## Documentos aceitos
+
+A Meta aceita **um** dos seguintes documentos para verificar sua empresa:
+
+- **Cartao CNPJ** (Comprovante de Situacao Cadastral da Receita Federal)
+- **Conta de luz, agua ou telefone** no nome da empresa (ultimos 3 meses)
+- **Contrato social** ou alteracao contratual
+- **Certificado de registro** na junta comercial
+- **Alvara de funcionamento**
+
+<Callout type="info">
+  O documento mais rapido e facil de usar e o **Cartao CNPJ**. Voce pode gerar gratuitamente em [solucoes.receita.fazenda.gov.br](https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp).
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse a Central de Seguranca
+
+No Meta Business Suite, va em **Configuracoes** → **Central de Seguranca** (Security Center). Ou acesse direto: [business.facebook.com/settings/security](https://business.facebook.com/settings/security).
+
+<Screenshot alt="Menu Configuracoes > Central de Seguranca" />
+
+### Inicie a verificacao
+
+Clique em **"Iniciar verificacao"** (Start Verification). Se o botao nao aparecer, verifique se voce e administrador da conta Business.
+
+<Screenshot alt="Botao Iniciar Verificacao na Central de Seguranca" />
+
+### Confirme os dados da empresa
+
+A Meta vai pedir:
+
+- **Nome legal da empresa** — exatamente como consta no documento (ex: "BELLA VIDA ESTETICA LTDA")
+- **Endereco** — endereco completo como consta no documento
+- **Telefone** — telefone comercial da empresa
+- **Site** — URL do site da empresa (se tiver)
+
+<Callout type="warning">
+  O nome da empresa precisa ser **identico** ao que consta no documento. Se no CNPJ esta "MARIA SILVA LTDA ME", nao coloque "Clinica da Maria". Use o nome legal completo.
+</Callout>
+
+### Selecione o tipo de documento
+
+Escolha o tipo de documento que voce vai enviar (ex: "Tax Registration Certificate" para o Cartao CNPJ).
+
+### Faca upload do documento
+
+Envie uma foto ou PDF legivel do documento. Dicas:
+
+- **Resolucao boa** — o texto precisa estar legivel
+- **Documento completo** — nao corte nenhuma parte
+- **Formato** — PDF, JPG ou PNG (ate 10 MB)
+
+<Screenshot alt="Upload do documento de verificacao" />
+
+### Aguarde a analise
+
+A Meta vai analisar seu documento. Voce recebera um email com o resultado em **1 a 5 dias uteis**.
+
+Possiveis resultados:
+
+- **Aprovado** — sua empresa esta verificada
+- **Recusado** — a Meta vai informar o motivo (documento ilegivel, dados nao conferem, etc.)
+- **Informacoes adicionais** — a Meta pode pedir um segundo documento
+
+</Steps>
+
+## Problemas comuns
+
+### "Nao encontro o botao de verificacao"
+
+- Verifique se voce e **administrador** da conta Business (nao apenas funcionario)
+- Tente acessar por [business.facebook.com/settings/security](https://business.facebook.com/settings/security)
+
+### "Minha verificacao foi recusada"
+
+- Confira se o **nome legal** esta identico ao documento
+- Envie um documento mais legivel (sem sombras, sem cortes)
+- Tente com um documento diferente (ex: se usou conta de luz, tente o Cartao CNPJ)
+
+### "Nao tenho site"
+
+- A Meta nao exige site para a verificacao. Se nao tiver, deixe o campo em branco ou coloque sua pagina do Facebook.
+
+## Proximo passo
+
+Com a empresa verificada, voce pode [criar um app no Meta for Developers](/guia-meta/criar-app) — que e onde a API do WhatsApp "mora".

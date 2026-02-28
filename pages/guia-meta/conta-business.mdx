@@ -1,0 +1,84 @@
+# Criar Conta Meta Business
+
+Para usar a API do WhatsApp (e conectar ao Dialogi), voce precisa de uma **conta Meta Business** — o painel central onde a Meta gerencia tudo relacionado a sua empresa.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="info">
+  Se voce ja tem uma pagina no Facebook para sua empresa, provavelmente ja tem uma conta Meta Business criada automaticamente. Verifique em [business.facebook.com](https://business.facebook.com) antes de criar uma nova.
+</Callout>
+
+## O que e a Meta Business Suite?
+
+A **Meta Business Suite** (antigo Facebook Business Manager) e o painel da Meta onde voce gerencia:
+
+- Paginas do Facebook
+- Contas do Instagram Business
+- Numeros de WhatsApp (via API)
+- Usuarios e permissoes da equipe
+- Apps de desenvolvedores
+
+Toda a configuracao do WhatsApp API passa por aqui.
+
+## Pre-requisitos
+
+Antes de comecar, tenha em maos:
+
+- **Email valido** — de preferencia o email corporativo da sua empresa
+- **Pagina no Facebook** — se ainda nao tem, crie uma pagina para sua empresa no Facebook
+- **Dados da empresa** — nome legal, endereco, site (se tiver)
+
+<Callout type="warning">
+  Use uma conta pessoal do Facebook que seja **sua** (do dono ou administrador da empresa). Nunca use uma conta compartilhada — a Meta pode bloquear contas com comportamento suspeito.
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse o Meta Business Suite
+
+Abra o navegador e va ate [business.facebook.com](https://business.facebook.com). Faca login com sua conta pessoal do Facebook.
+
+<Screenshot alt="Tela de login do Meta Business Suite" />
+
+### Clique em "Criar conta"
+
+Se voce ja tem uma conta Business, vai ver o painel direto. Se nao, clique em **"Criar conta"** (ou "Get Started").
+
+<Screenshot alt="Botao Criar Conta no Meta Business Suite" />
+
+### Preencha os dados da empresa
+
+Informe:
+
+- **Nome da empresa** — o nome fantasia (ex: "Clinica Bella Vida")
+- **Seu nome** — nome do administrador
+- **Email comercial** — email onde voce quer receber notificacoes da Meta
+
+<Screenshot alt="Formulario de criacao da conta Business" />
+
+### Confirme seu email
+
+A Meta vai enviar um email de confirmacao. Abra seu email, clique no link de verificacao e pronto.
+
+### Pronto! Conta criada
+
+Voce sera redirecionado para o painel do Meta Business Suite. A partir daqui, voce ja pode:
+
+- Adicionar sua pagina do Facebook
+- Criar apps de desenvolvedores
+- Configurar o WhatsApp API
+
+</Steps>
+
+## Dicas importantes
+
+- **Uma conta Business por empresa** — nao crie varias contas para a mesma empresa, a Meta pode penalizar
+- **Adicione um segundo administrador** — se algo acontecer com sua conta pessoal, voce nao perde acesso
+- **Mantenha os dados atualizados** — nome, endereco e documentos corretos facilitam a verificacao da empresa (proximo passo)
+
+## Proximo passo
+
+Com a conta Business criada, o proximo passo e [verificar sua empresa](/guia-meta/verificar-empresa) junto a Meta — requisito obrigatorio para usar a API do WhatsApp.

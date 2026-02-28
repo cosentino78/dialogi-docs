@@ -1,0 +1,151 @@
+# Broadcast (Envio em Massa)
+
+O **broadcast** permite enviar uma mesma mensagem (template) para centenas ou milhares de contatos de uma so vez. Ideal para campanhas, lembretes em lote e comunicados gerais.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="warning">
+  Broadcasts so funcionam com **templates aprovados** pela Meta. Voce nao pode enviar mensagens livres em massa. Certifique-se de ter [templates prontos](/campanhas/templates) antes de criar um broadcast.
+</Callout>
+
+## Como funciona
+
+```
+Voce seleciona contatos → Escolhe um template → Preenche variaveis → Envia
+```
+
+O Dialogi envia o template para cada contato individualmente. Do lado do cliente, ele recebe uma mensagem normal no WhatsApp — nao e um grupo nem lista de transmissao.
+
+## Criar um broadcast
+
+<Steps>
+
+### Acesse a area de campanhas
+
+No menu lateral, va em **Campanhas** → **Broadcast** (ou **Novo envio**).
+
+<Screenshot alt="Tela de criacao de broadcast" />
+
+### Selecione o template
+
+Escolha um dos templates aprovados. Voce vera a pre-visualizacao da mensagem.
+
+<Screenshot alt="Selecao de template para broadcast" />
+
+### Selecione os contatos
+
+Escolha quem vai receber a mensagem:
+
+- **Todos os contatos** — envia para toda sua base
+- **Filtro por tag/etiqueta** — envie apenas para contatos com uma tag especifica (ex: "Clientes VIP", "Agendamento Pendente")
+- **Importar lista** — faca upload de uma lista CSV com os numeros
+
+<Screenshot alt="Selecao de contatos para broadcast" />
+
+### Preencha as variaveis
+
+Se o template tem variaveis (`{{1}}`, `{{2}}`), voce pode:
+
+- **Preencher manualmente** — um valor fixo para todos (ex: `{{1}}` = "Cliente")
+- **Mapear por campo** — puxar automaticamente do cadastro do contato (ex: `{{1}}` = nome do contato)
+
+<Callout type="info">
+  Mapear variaveis por campo do contato e a melhor opcao — cada pessoa recebe a mensagem personalizada com seu nome, por exemplo.
+</Callout>
+
+### Agende ou envie agora
+
+Voce pode:
+
+- **Enviar agora** — o broadcast comeca imediatamente
+- **Agendar** — selecione data e horario para o envio
+
+### Confirme e envie
+
+Revise o resumo (template, numero de contatos, variaveis) e clique em **"Enviar"** ou **"Agendar"**.
+
+</Steps>
+
+## Acompanhando o envio
+
+Apos iniciar o broadcast, voce pode acompanhar o progresso em tempo real:
+
+| Metrica | Significado |
+|---|---|
+| **Enviadas** | Mensagens entregues a Meta com sucesso |
+| **Entregues** | Mensagens que chegaram ao celular do cliente |
+| **Lidas** | Mensagens abertas pelo cliente (quando tick azul disponivel) |
+| **Respondidas** | Clientes que responderam a mensagem |
+| **Falhas** | Mensagens que nao puderam ser enviadas |
+
+<Screenshot alt="Dashboard de acompanhamento do broadcast" />
+
+## Velocidade de envio
+
+O Dialogi envia as mensagens respeitando os [limites da Meta](/guia-meta/limites-tiers):
+
+| Seu tier | Conversas por 24h | Velocidade aproximada |
+|---|---|---|
+| Tier 1 | 1.000 | ~16 mensagens/minuto |
+| Tier 2 | 10.000 | ~160 mensagens/minuto |
+| Tier 3 | 100.000 | ~1.600 mensagens/minuto |
+
+<Callout type="warning">
+  Nao tente enviar mais do que seu tier permite. O Dialogi respeita o limite automaticamente, mas se voce exceder, a Meta pode restringir sua conta.
+</Callout>
+
+## Boas praticas para broadcasts
+
+### 1. Segmente seu publico
+
+Nao envie a mesma mensagem para todos. Segmente por:
+
+- **Interesse** — clientes que perguntaram sobre um produto especifico
+- **Historico** — clientes que compraram nos ultimos 30 dias
+- **Engajamento** — contatos que responderam a ultima campanha
+
+### 2. Personalize com variaveis
+
+```
+❌ "Ola, temos uma promocao para voce!"
+✅ "Ola Maria, como cliente VIP voce tem 20% de desconto!"
+```
+
+### 3. Escolha o horario certo
+
+- **Melhor horario**: 10h-12h e 14h-17h (dias uteis)
+- **Evite**: madrugada, domingos, feriados
+- **Teste**: envie em horarios diferentes e compare as taxas
+
+### 4. Comece com volume baixo
+
+Se voce nunca enviou um broadcast:
+
+1. Comece com **50-100 contatos** para testar
+2. Veja a taxa de resposta e bloqueio
+3. Se tudo estiver bem, aumente gradualmente
+4. Monitore o [Quality Rating](/guia-meta/quality-rating) a cada envio
+
+### 5. Ofereca saida
+
+Sempre inclua uma forma do cliente parar de receber mensagens:
+
+```
+Responda SAIR para nao receber mais mensagens.
+```
+
+Isso reduz bloqueios e denuncias, mantendo seu Quality Rating saudavel.
+
+## Falhas comuns
+
+| Erro | Causa | Solucao |
+|---|---|---|
+| "Numero invalido" | Formato incorreto do telefone | Verifique se inclui +55 e DDD |
+| "Template nao encontrado" | Template foi pausado ou removido | Verifique o status na Meta |
+| "Limite excedido" | Tier insuficiente | Aguarde 24h ou suba de tier |
+| "Numero bloqueou voce" | Cliente bloqueou seu numero | Remova o contato da lista |
+
+## Proximo passo
+
+Alem de campanhas, aprenda a usar a [inbox](/inbox/visao-geral) do Dialogi para atender conversas em tempo real.

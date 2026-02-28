@@ -1,0 +1,149 @@
+# Gerar Token Permanente
+
+O **token de acesso** e a "senha" que permite ao Dialogi enviar e receber mensagens pelo seu numero do WhatsApp. Sem ele, nada funciona. Esta e a pagina mais importante deste guia — siga cada passo com atencao.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="warning">
+  O token temporario que a Meta gera na pagina de configuracao expira em **24 horas**. Voce precisa gerar um **token permanente** seguindo o processo abaixo. Se nao fizer isso, o Dialogi vai parar de funcionar no dia seguinte.
+</Callout>
+
+## Tipos de token
+
+| Tipo | Duracao | Uso |
+|---|---|---|
+| **Token temporario** | 24 horas | Apenas para testes rapidos |
+| **Token permanente** | Nunca expira | Para producao no Dialogi |
+
+O token temporario e util para um teste inicial, mas **voce PRECISA gerar o permanente** para usar o Dialogi no dia a dia.
+
+## Pre-requisitos
+
+- [App criado](/guia-meta/criar-app) com WhatsApp adicionado
+- [Numero registrado](/guia-meta/registrar-numero)
+- Voce ser **administrador** da conta Meta Business
+
+## Como gerar o token permanente
+
+<Steps>
+
+### Acesse as Configuracoes do Meta Business
+
+Va ate [business.facebook.com/settings](https://business.facebook.com/settings). No menu lateral esquerdo, procure por **"Usuarios do sistema"** (System Users).
+
+<Screenshot alt="Menu Configuracoes > Usuarios do Sistema" />
+
+<Callout type="info">
+  Se voce nao encontrar "Usuarios do sistema", tente: **Configuracoes da empresa** → **Usuarios** → **Usuarios do sistema**.
+</Callout>
+
+### Crie um usuario do sistema
+
+Clique em **"Adicionar"** (Add) para criar um novo usuario do sistema:
+
+- **Nome**: use algo descritivo (ex: "Dialogi API" ou "WhatsApp Bot")
+- **Funcao**: selecione **"Admin"**
+
+<Screenshot alt="Formulario de criacao do usuario do sistema" />
+
+<Callout type="warning">
+  Selecione a funcao **"Admin"** (e nao "Funcionario"). O usuario precisa de permissoes de administrador para gerenciar mensagens do WhatsApp.
+</Callout>
+
+### Adicione ativos ao usuario
+
+Apos criar o usuario, voce precisa dar acesso ao app do WhatsApp:
+
+1. Clique no usuario que voce acabou de criar
+2. Clique em **"Adicionar ativos"** (Add Assets)
+3. Selecione **"Apps"** no menu lateral
+4. Encontre o app que voce criou (ex: "Dialogi WhatsApp")
+5. Ative **"Controle total"** (Full Control)
+6. Clique em **"Salvar alteracoes"**
+
+<Screenshot alt="Adicionando ativos ao usuario do sistema" />
+
+### Adicione tambem o ativo WhatsApp
+
+Ainda na tela de ativos do usuario:
+
+1. Clique em **"Adicionar ativos"** novamente
+2. Selecione **"Contas do WhatsApp"** (WhatsApp Accounts)
+3. Encontre sua conta WhatsApp Business
+4. Ative **"Controle total"** (Full Control)
+5. Clique em **"Salvar alteracoes"**
+
+<Screenshot alt="Adicionando ativo WhatsApp ao usuario do sistema" />
+
+### Gere o token
+
+Agora vem o momento crucial:
+
+1. Na pagina do usuario do sistema, clique em **"Gerar novo token"** (Generate New Token)
+2. Selecione o **app** que voce criou
+3. Na lista de permissoes, marque:
+   - `whatsapp_business_messaging` — **obrigatorio**
+   - `whatsapp_business_management` — **obrigatorio**
+4. Clique em **"Gerar token"**
+
+<Screenshot alt="Tela de geracao de token com permissoes selecionadas" />
+
+### Copie e salve o token
+
+Um token longo sera exibido. **COPIE IMEDIATAMENTE** — ele so e mostrado uma vez!
+
+<Screenshot alt="Token gerado com sucesso" />
+
+<Callout type="error">
+  **ATENCAO MAXIMA:** O token so e exibido **uma unica vez**. Se voce fechar a janela sem copiar, precisara gerar outro. Copie e salve em um lugar seguro AGORA.
+</Callout>
+
+</Steps>
+
+## Onde inserir o token no Dialogi
+
+Com o token copiado:
+
+1. Acesse o Dialogi em [dialogi.com.br](https://dialogi.com.br)
+2. Va em **Configuracoes** → **Canais** → **WhatsApp**
+3. Cole o **Token de acesso** no campo correspondente
+4. Insira tambem o **Phone Number ID** e o **WhatsApp Business Account ID**
+5. Clique em **Salvar**
+
+<Screenshot alt="Tela de configuracao do WhatsApp no Dialogi" />
+
+## Checklist de seguranca
+
+- [ ] Token copiado e salvo em local seguro (gerenciador de senhas recomendado)
+- [ ] Token **nunca** compartilhado por email, WhatsApp ou chat
+- [ ] Token **nunca** publicado em repositorios Git, foruns ou documentos compartilhados
+- [ ] Apenas pessoas de confianca tem acesso ao Meta Business Suite
+
+## Problemas comuns
+
+### "Nao encontro Usuarios do Sistema"
+
+- Voce precisa ser **administrador** da conta Meta Business
+- Tente: Configuracoes da empresa → Usuarios → Usuarios do sistema
+- Se ainda nao aparecer, pode ser que sua conta Business precise de verificacao
+
+### "O token parou de funcionar"
+
+Possiveis causas:
+
+- Voce usou o token **temporario** (24h) em vez do permanente
+- O usuario do sistema foi excluido
+- As permissoes do app foram alteradas
+- O app foi removido ou desativado
+
+**Solucao**: Gere um novo token permanente seguindo o processo acima.
+
+### "Erro de permissao ao gerar o token"
+
+- Verifique se marcou `whatsapp_business_messaging` **e** `whatsapp_business_management`
+- Verifique se o usuario tem **Controle total** sobre o app e a conta WhatsApp
+
+## Proximo passo
+
+Com o token configurado no Dialogi, agora voce precisa [configurar o webhook](/guia-meta/configurar-webhook) — para que a Meta envie as mensagens recebidas para o Dialogi em tempo real.

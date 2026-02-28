@@ -1,0 +1,162 @@
+# Atender Conversas
+
+O fluxo completo de atendimento no Dialogi: desde assumir uma conversa ate finaliza-la. Aprenda a atender com eficiencia.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Fluxo de atendimento
+
+```
+Nova mensagem → Fila → Assumir → Responder → Resolver → Arquivar
+```
+
+## Assumir uma conversa
+
+Quando um cliente envia uma mensagem, ela aparece na fila de **"Nao atribuidas"**. Para atende-la:
+
+<Steps>
+
+### Veja a fila
+
+No inbox, clique no filtro **"Nao atribuidas"** para ver as conversas esperando atendimento.
+
+### Clique na conversa
+
+Clique na conversa que deseja atender. Voce vera o historico completo de mensagens.
+
+### Assuma a conversa
+
+Clique em **"Atribuir a mim"** (ou arraste para si). A conversa agora aparece na sua lista de **"Minhas"** conversas.
+
+<Screenshot alt="Botao Atribuir a mim na conversa" />
+
+</Steps>
+
+<Callout type="info">
+  Ao assumir uma conversa, os outros atendentes sabem que voce esta cuidando dela. Isso evita que duas pessoas respondam ao mesmo cliente.
+</Callout>
+
+## Responder mensagens
+
+### Mensagem de texto
+
+1. Clique no campo de mensagem na parte inferior
+2. Digite sua resposta
+3. Pressione **Enter** para enviar (ou clique no botao de enviar)
+
+### Enviar midia
+
+Voce pode enviar:
+
+- **Imagens** — clique no icone de anexo (📎) e selecione uma imagem
+- **Documentos** — PDFs, planilhas e outros arquivos
+- **Audio** — grave e envie mensagens de voz
+
+<Screenshot alt="Campo de mensagem com opcoes de anexo" />
+
+### Usar respostas rapidas
+
+Se voce tem respostas que usa com frequencia, pode configura-las como **respostas rapidas**:
+
+1. Digite `/` no campo de mensagem
+2. Selecione a resposta rapida da lista
+3. Edite se necessario e envie
+
+## Notas internas
+
+Precisa anotar algo sobre o atendimento que so a equipe deve ver? Use **notas internas**:
+
+1. No painel de detalhes do contato (direita), encontre a secao **"Notas"**
+2. Clique em **"Adicionar nota"**
+3. Escreva sua anotacao e salve
+
+<Callout type="info">
+  Notas internas **nunca** sao enviadas ao cliente. Sao visiveis apenas para atendentes e administradores.
+</Callout>
+
+## Transferir conversa
+
+Precisa passar a conversa para outro atendente? Talvez o cliente precisa de um especialista ou voce vai sair do turno:
+
+<Steps>
+
+### Abra a conversa
+
+Selecione a conversa que deseja transferir.
+
+### Clique em "Transferir"
+
+No topo da conversa, clique no botao de **transferir** ou no menu de opcoes.
+
+### Selecione o atendente
+
+Escolha o atendente que vai assumir a conversa. Opcionalmente, adicione uma nota explicando o motivo.
+
+### Confirme
+
+A conversa sera movida para a fila do atendente selecionado.
+
+</Steps>
+
+## Tags e organizacao
+
+Use **tags** (etiquetas) para organizar suas conversas:
+
+- **Lead novo** — contato que acabou de chegar
+- **Orcamento enviado** — aguardando retorno do cliente
+- **VIP** — cliente importante
+- **Suporte tecnico** — problema a resolver
+- **Fechado** — negocio concluido
+
+Para adicionar uma tag:
+
+1. No painel de detalhes do contato, clique em **"Adicionar tag"**
+2. Selecione uma tag existente ou crie uma nova
+3. A tag aparece na conversa e pode ser usada como filtro
+
+## Arquivar (finalizar) conversa
+
+Quando o atendimento esta completo:
+
+<Steps>
+
+### Confirme que o cliente esta satisfeito
+
+Certifique-se de que todas as duvidas foram respondidas.
+
+### Arquive a conversa
+
+Clique no botao **"Arquivar"** no topo da conversa. A conversa sera movida para **"Arquivadas"**.
+
+</Steps>
+
+<Callout type="info">
+  Arquivar nao deleta a conversa — ela fica salva no historico. Se o cliente enviar uma nova mensagem, a conversa reabre automaticamente.
+</Callout>
+
+## Boas praticas de atendimento
+
+### Tempo de resposta
+
+- **Primeira resposta** — ideal em menos de 5 minutos
+- **Respostas seguintes** — ideal em menos de 2 minutos
+- Clientes esperam atendimento rapido no WhatsApp
+
+### Comunicacao
+
+- Use o **nome do cliente** sempre que possivel
+- Seja direto e objetivo — mensagens curtas funcionam melhor
+- Use emojis com moderacao — transmitem simpatia
+- Evite jargoes tecnicos — fale a lingua do cliente
+
+### Organizacao
+
+- Nao acumule conversas — resolva e arquive
+- Use tags para nao perder o contexto
+- Adicione notas quando transferir para outro atendente
+- Mantenha a fila de nao atribuidas o mais vazia possivel
+
+## Proximo passo
+
+Personalize como seus clientes identificam cada atendente configurando a [assinatura do atendente](/inbox/assinatura).

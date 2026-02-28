@@ -1,0 +1,112 @@
+# Limites e Tiers de Envio
+
+A Meta impoe **limites de envio** de mensagens para garantir a qualidade do ecossistema do WhatsApp. Esses limites sao organizados em **tiers** (niveis) que aumentam conforme voce demonstra bom uso da plataforma.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Tabela de tiers
+
+| Tier | Limite de mensagens | Descricao |
+|---|---|---|
+| **Tier 1** | 1.000 conversas unicas / 24h | Conta nova, recem-verificada |
+| **Tier 2** | 10.000 conversas unicas / 24h | Bom historico de qualidade |
+| **Tier 3** | 100.000 conversas unicas / 24h | Volume alto, qualidade consistente |
+| **Tier 4** | Ilimitado | Grandes operacoes |
+
+<Callout type="info">
+  O limite e por **conversas unicas iniciadas por voce** em um periodo de 24 horas. Respostas a mensagens de clientes (dentro da janela de 24h) **nao contam** para esse limite.
+</Callout>
+
+## Como funciona o limite
+
+Vamos esclarecer o que conta e o que nao conta:
+
+| Acao | Conta no limite? |
+|---|---|
+| Voce envia template para cliente novo | **Sim** |
+| Cliente te manda mensagem e voce responde | **Nao** |
+| Voce responde dentro da janela de 24h | **Nao** |
+| Voce envia broadcast para 500 contatos | **Sim** (500 conversas) |
+
+**Resumo:** o limite se aplica apenas quando **voce inicia** a conversa (via template). Respostas sao livres.
+
+## Como subir de tier
+
+A Meta aumenta automaticamente seu tier quando voce atende **duas condicoes simultaneas**:
+
+1. **Volume**: Voce envia pelo menos **metade** do limite atual em um periodo de 7 dias
+2. **Qualidade**: Sua classificacao de qualidade esta **Verde** ou **Amarela** (nao vermelha)
+
+<Steps>
+
+### Comece no Tier 1
+
+Sua conta nova comeca no Tier 1 (1.000 conversas/24h).
+
+### Envie pelo menos 500 conversas em 7 dias
+
+Para subir para o Tier 2, voce precisa enviar pelo menos 500 conversas (metade de 1.000) em 7 dias.
+
+### Mantenha a qualidade alta
+
+Sua classificacao de qualidade ([Quality Rating](/guia-meta/quality-rating)) precisa estar Verde ou Amarela.
+
+### Subida automatica
+
+Se ambas as condicoes forem atendidas, a Meta sobe seu tier automaticamente. Voce recebe uma notificacao.
+
+</Steps>
+
+<Callout type="warning">
+  A subida de tier **nao e instantanea**. Pode levar de **24 a 48 horas** apos atingir as condicoes. Nao tente forcar o volume — mensagens de baixa qualidade podem rebaixar seu tier.
+</Callout>
+
+## Rebaixamento de tier
+
+Sim, a Meta pode **diminuir** seu tier se:
+
+- Sua classificacao de qualidade cair para **Vermelha**
+- Muitos clientes bloquearem ou reportarem suas mensagens
+- Seus templates forem rejeitados repetidamente
+
+Quando rebaixado, voce recebe um aviso e precisa melhorar a qualidade para subir novamente.
+
+## Como verificar seu tier atual
+
+<Steps>
+
+### Acesse o WhatsApp Manager
+
+Va ate [business.facebook.com/wa/manage/phone-numbers](https://business.facebook.com/wa/manage/phone-numbers).
+
+### Veja a coluna "Limite de envio"
+
+Na lista de numeros, a coluna **"Messaging Limit"** mostra seu tier atual.
+
+<Screenshot alt="Coluna Messaging Limit no WhatsApp Manager" />
+
+</Steps>
+
+## Estrategia para subir de tier rapido
+
+1. **Comece com templates de Utility** — confirmacoes e lembretes tem menos chance de serem bloqueados
+2. **Envie para quem quer receber** — evite enviar para contatos que nao conhecem sua empresa
+3. **Monitore a qualidade diariamente** — se a qualidade cair para amarelo, reduza o volume imediatamente
+4. **Aumente gradualmente** — nao pule de 100 para 1.000 de uma vez, aumente aos poucos
+5. **Evite horarios inconvenientes** — nao envie mensagens de madrugada
+
+## Limites durante restricao
+
+Se a Meta restringir sua conta por problemas de qualidade, seus limites ficam:
+
+| Status | Limite |
+|---|---|
+| **Restrito** | 250 conversas/24h (independente do tier) |
+| **Sinalizavel** | Limite atual mantido, mas monitorado de perto |
+
+A restricao e **temporaria** e e removida quando a qualidade volta ao normal.
+
+## Proximo passo
+
+Para manter seus limites altos e evitar restricoes, entenda como funciona o [Quality Rating](/guia-meta/quality-rating) da Meta.

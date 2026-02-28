@@ -1,0 +1,125 @@
+# Configurar Provider de IA
+
+O Dialogi usa **inteligencia artificial** para responder automaticamente as mensagens dos seus clientes. Voce escolhe o provider (provedor) de IA e configura como ele deve se comportar.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Providers disponiveis
+
+O Dialogi suporta tres providers de IA:
+
+| Provider | Modelos | Indicado para |
+|---|---|---|
+| **Anthropic** | Claude Sonnet, Claude Haiku | Melhor qualidade de resposta, conversas naturais |
+| **OpenAI** | GPT-4o, GPT-4o-mini | Alternativa solida, boa relacao custo-qualidade |
+| **Ollama** | LLaMA, Mistral e outros | Para quem quer rodar IA localmente (sem custo por mensagem) |
+
+<Callout type="info">
+  Recomendamos o **Anthropic Claude** para atendimento ao cliente. Ele e mais natural e segue instrucoes com mais precisao. Para volume muito alto com custo reduzido, o **GPT-4o-mini** ou **Claude Haiku** sao boas opcoes.
+</Callout>
+
+## Pre-requisito: API Key
+
+Para usar Anthropic ou OpenAI, voce precisa de uma **API key** (chave de API) do provider:
+
+### Anthropic (Claude)
+
+1. Acesse [console.anthropic.com](https://console.anthropic.com)
+2. Crie uma conta (ou faca login)
+3. Va em **API Keys** → **Create Key**
+4. Copie a chave gerada
+
+### OpenAI (GPT)
+
+1. Acesse [platform.openai.com](https://platform.openai.com)
+2. Crie uma conta (ou faca login)
+3. Va em **API Keys** → **Create new secret key**
+4. Copie a chave gerada
+
+### Ollama (local)
+
+1. Instale o Ollama no seu servidor: [ollama.com](https://ollama.com)
+2. Baixe um modelo: `ollama pull llama3.2`
+3. Anote a URL do servidor (ex: `http://localhost:11434`)
+
+<Callout type="warning">
+  Anthropic e OpenAI **cobram por uso** (por token/mensagem). Configure limites de gasto no painel do provider para evitar surpresas. Ollama e gratuito, mas exige servidor proprio.
+</Callout>
+
+## Configurando no Dialogi
+
+<Steps>
+
+### Acesse as configuracoes de IA
+
+No Dialogi, va em **Configuracoes** → **Inteligencia Artificial**.
+
+<Screenshot alt="Menu Configuracoes > Inteligencia Artificial" />
+
+### Selecione o provider
+
+Escolha entre **Anthropic**, **OpenAI** ou **Ollama**.
+
+### Insira a API Key
+
+Cole a chave de API que voce gerou no campo correspondente.
+
+<Screenshot alt="Campo de API Key do provider de IA" />
+
+### Escolha o modelo
+
+Selecione o modelo que deseja usar:
+
+**Anthropic:**
+- `claude-sonnet-4-20250514` — mais inteligente, melhor qualidade
+- `claude-haiku-4-5-20251001` — mais rapido e barato
+
+**OpenAI:**
+- `gpt-4o` — mais inteligente
+- `gpt-4o-mini` — mais rapido e barato
+
+**Ollama:**
+- Depende dos modelos instalados no seu servidor
+
+### Ative a IA
+
+Ative o toggle **"IA habilitada"** para comecar a usar.
+
+### Salve
+
+Clique em **"Salvar"**. A IA esta pronta para responder!
+
+</Steps>
+
+## Testando a IA
+
+Para verificar que a IA esta funcionando:
+
+1. Envie uma mensagem de teste para o numero da empresa
+2. Aguarde — a IA deve responder automaticamente em poucos segundos
+3. Verifique se a resposta e adequada
+
+<Callout type="info">
+  Se a IA nao respondeu, verifique: (1) a API key esta correta, (2) o toggle de IA esta ativo, (3) o [system prompt](/ia/system-prompt) esta configurado.
+</Callout>
+
+## Custos estimados
+
+Uma referencia de custos por mensagem (valores aproximados):
+
+| Modelo | Custo por mensagem | 1.000 conversas/mes |
+|---|---|---|
+| Claude Sonnet | ~R$ 0,05 | ~R$ 50 |
+| Claude Haiku | ~R$ 0,005 | ~R$ 5 |
+| GPT-4o | ~R$ 0,04 | ~R$ 40 |
+| GPT-4o-mini | ~R$ 0,004 | ~R$ 4 |
+| Ollama (local) | R$ 0 (custo servidor) | R$ 0 |
+
+<Callout type="info">
+  Os custos variam conforme o tamanho das mensagens e o numero de turnos na conversa. Os valores acima sao estimativas para mensagens curtas.
+</Callout>
+
+## Proximo passo
+
+Com o provider configurado, agora voce precisa escrever o [system prompt](/ia/system-prompt) — as instrucoes que dizem a IA como ela deve atender seus clientes.

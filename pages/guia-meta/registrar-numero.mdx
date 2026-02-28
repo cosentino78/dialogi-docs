@@ -1,0 +1,127 @@
+# Registrar Numero de Telefone
+
+Para usar a API do WhatsApp com seu proprio numero (e nao o numero de teste), voce precisa **registrar um numero de telefone** real na plataforma da Meta.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Requisitos do numero
+
+Antes de registrar, verifique se o seu numero atende estes requisitos:
+
+- **Numero valido** — com DDD e codigo do pais (+55 para Brasil)
+- **Capaz de receber SMS ou ligacao** — a Meta vai enviar um codigo de verificacao
+- **Nao estar registrado no WhatsApp pessoal** — se o numero ja tem WhatsApp, voce precisara desvincula-lo primeiro
+
+<Callout type="warning">
+  **Importante:** Ao registrar um numero na API do WhatsApp Business, ele sera **desvinculado** do app WhatsApp pessoal (ou WhatsApp Business app). Voce nao podera usar o mesmo numero nos dois ao mesmo tempo. Use um numero dedicado para a empresa.
+</Callout>
+
+## Qual numero usar?
+
+| Opcao | Vantagem | Desvantagem |
+|---|---|---|
+| **Numero novo (chip novo)** | Sem conflito com WhatsApp pessoal | Precisa comprar um chip |
+| **Numero fixo da empresa** | Clientes ja conhecem | Precisa receber SMS ou ligacao |
+| **Numero existente** | Ja tem contatos | Perde o WhatsApp pessoal nesse numero |
+
+<Callout type="info">
+  A opcao mais comum entre nossos clientes e comprar um **chip novo** dedicado so para o WhatsApp Business API. Custa poucos reais e evita dor de cabeca.
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse a Configuracao da API
+
+No painel do seu app, va em **WhatsApp** → **Configuracao da API** (API Setup).
+
+<Screenshot alt="Pagina de Configuracao da API do WhatsApp" />
+
+### Clique em "Adicionar numero de telefone"
+
+Na secao **"De"** (From), clique em **"Adicionar numero de telefone"** (Add Phone Number).
+
+<Screenshot alt="Botao Adicionar Numero de Telefone" />
+
+### Preencha o perfil comercial
+
+A Meta vai pedir informacoes sobre sua empresa:
+
+- **Nome de exibicao** — o nome que seus clientes verao no WhatsApp (ex: "Clinica Bella Vida")
+- **Categoria** — selecione a categoria mais proxima do seu negocio
+- **Descricao** — breve descricao da empresa (opcional)
+- **Foto de perfil** — logo da empresa (recomendado: 640x640px)
+
+<Callout type="info">
+  O **nome de exibicao** pode levar ate **24 horas** para ser aprovado pela Meta. Ele precisa seguir as [diretrizes da Meta](https://www.facebook.com/business/help/338047025165344) — nao use nomes genericos como "Empresa" ou "Atendimento".
+</Callout>
+
+### Insira o numero de telefone
+
+Digite o numero completo com:
+
+- **Codigo do pais**: +55 (Brasil)
+- **DDD + numero**: ex: 11999887766
+
+### Verifique o numero
+
+A Meta vai enviar um **codigo de verificacao** via:
+
+- **SMS** — mensagem de texto
+- **Ligacao** — chamada de voz com o codigo
+
+Escolha o metodo que preferir e insira o codigo de 6 digitos.
+
+<Screenshot alt="Tela de verificacao do numero com codigo" />
+
+### Numero registrado!
+
+Apos a verificacao, seu numero aparecera na lista de numeros do app. Voce vera:
+
+- **Phone Number ID** — anote esse ID, voce vai precisar dele no Dialogi
+- **Status** — "Connected" quando tudo estiver certo
+
+</Steps>
+
+## Perfil comercial
+
+Apos registrar o numero, personalize seu perfil:
+
+- **Foto de perfil** — use o logo da empresa (640x640px, formato quadrado)
+- **Descricao** — ate 256 caracteres sobre a empresa
+- **Endereco** — endereco comercial
+- **Email** — email de contato
+- **Site** — URL do site
+
+Estas informacoes aparecem quando alguem clica no seu nome no WhatsApp.
+
+## Problemas comuns
+
+### "O numero ja esta em uso"
+
+O numero esta registrado em outro WhatsApp (pessoal ou Business app). Voce precisa:
+
+1. Abrir o WhatsApp no celular com esse numero
+2. Ir em **Configuracoes** → **Conta** → **Excluir conta**
+3. Aguardar alguns minutos e tentar novamente na Meta
+
+### "Nao recebi o codigo de verificacao"
+
+- Verifique se o numero esta ativo e recebendo SMS/ligacoes
+- Tente o metodo alternativo (se tentou SMS, tente ligacao)
+- Aguarde 1 minuto e solicite novamente
+
+### "Nome de exibicao rejeitado"
+
+A Meta rejeita nomes que:
+- Sao muito genericos ("Loja", "Clinica")
+- Contem apenas emojis ou simbolos
+- Nao correspondem a empresa real
+
+Use o nome fantasia real da empresa (ex: "Clinica Bella Vida").
+
+## Proximo passo
+
+Com o numero registrado, agora voce precisa [gerar um token permanente](/guia-meta/gerar-token) — a "senha" que permite ao Dialogi enviar mensagens pelo seu numero.

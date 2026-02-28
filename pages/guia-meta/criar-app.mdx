@@ -1,0 +1,92 @@
+# Criar App no Meta for Developers
+
+O **Meta for Developers** e o portal onde voce cria "apps" — que sao basicamente projetos que conectam sistemas externos (como o Dialogi) as APIs da Meta. Voce precisa de um app para acessar a API do WhatsApp.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="info">
+  Nao se preocupe com a palavra "app" — voce nao vai programar nada. E apenas o nome que a Meta da para o projeto que conecta sua empresa a API.
+</Callout>
+
+## Pre-requisitos
+
+- [Conta Meta Business criada](/guia-meta/conta-business)
+- [Empresa verificada](/guia-meta/verificar-empresa) (ou em processo de verificacao)
+
+## Passo a passo
+
+<Steps>
+
+### Acesse o Meta for Developers
+
+Va ate [developers.facebook.com](https://developers.facebook.com) e faca login com a mesma conta do Facebook que voce usou para criar a conta Business.
+
+<Screenshot alt="Pagina inicial do Meta for Developers" />
+
+### Clique em "Meus Apps"
+
+No canto superior direito, clique em **"Meus Apps"** (My Apps). Voce vera a lista de apps existentes (provavelmente vazia).
+
+### Crie um novo app
+
+Clique em **"Criar App"** (Create App).
+
+<Screenshot alt="Botao Criar App no Meta for Developers" />
+
+### Selecione o tipo de app
+
+A Meta vai perguntar o que voce quer fazer. Selecione:
+
+- **Tipo**: "Business" (Empresa)
+- Clique em **Avançar**
+
+<Callout type="warning">
+  Selecione **"Business"** — nao escolha "Consumer" ou "Gaming". O tipo Business e o unico que da acesso a API do WhatsApp.
+</Callout>
+
+### Preencha os detalhes do app
+
+- **Nome do app** — use algo descritivo (ex: "Dialogi WhatsApp" ou "WhatsApp Clinica Bella")
+- **Email de contato** — seu email comercial
+- **Conta Business** — selecione a conta Business que voce criou no passo anterior
+
+<Screenshot alt="Formulario de detalhes do novo app" />
+
+### Finalize a criacao
+
+Clique em **"Criar App"**. Voce pode precisar digitar sua senha do Facebook para confirmar.
+
+### App criado com sucesso
+
+Voce sera redirecionado para o **Painel do App** (App Dashboard). Anote o **App ID** que aparece no topo — voce vai precisar dele mais tarde.
+
+<Screenshot alt="Painel do App com App ID visivel" />
+
+</Steps>
+
+## Entendendo o Painel do App
+
+Apos criar o app, voce vera o painel com varias opcoes. As mais importantes para nos:
+
+| Secao | Para que serve |
+|---|---|
+| **Painel** (Dashboard) | Visao geral, App ID, App Secret |
+| **Configuracoes > Basico** | Dados do app, links para a conta Business |
+| **Produtos** | Onde voce adiciona WhatsApp, Instagram, etc. |
+| **Funcoes do App** | Permissoes avancadas (ex: `whatsapp_business_messaging`) |
+
+## IDs importantes
+
+Guarde estes IDs — voce vai precisar deles:
+
+- **App ID** — identificador unico do seu app (visivel no topo do painel)
+- **App Secret** — chave secreta (em Configuracoes > Basico)
+
+<Callout type="warning">
+  O **App Secret** e confidencial. Nunca compartilhe em grupos, emails ou chats. Ele da acesso total ao seu app.
+</Callout>
+
+## Proximo passo
+
+Com o app criado, agora voce vai [adicionar o WhatsApp como produto](/guia-meta/whatsapp-api) dentro desse app.

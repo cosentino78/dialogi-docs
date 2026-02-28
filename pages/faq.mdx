@@ -1,0 +1,119 @@
+# Perguntas Frequentes
+
+Respostas rapidas para as duvidas mais comuns sobre o Dialogi.
+
+import { Callout } from 'nextra/components'
+
+## Geral
+
+### O que e o Dialogi?
+
+O Dialogi e uma plataforma de atendimento omnichannel que centraliza conversas de **WhatsApp** e **Instagram** em um unico painel. Com ele, voce gerencia atendentes, usa inteligencia artificial para responder automaticamente e envia campanhas de mensagens.
+
+### Preciso saber programar para usar o Dialogi?
+
+**Nao.** O Dialogi e feito para donos de empresas e equipes de atendimento. Toda a configuracao e feita pelo painel visual, sem necessidade de codigo. As unicas partes que envolvem configuracao tecnica sao o [Guia Meta](/guia-meta/conta-business) (que ensinamos passo a passo) e as [integracoes](/integracoes/api-leads) avancadas (opcionais).
+
+### Quantos atendentes posso ter?
+
+Depende do seu plano. Consulte os planos disponiveis para ver o limite de atendentes por plano. Voce pode [adicionar atendentes](/primeiros-passos/adicionar-atendentes) a qualquer momento.
+
+### O Dialogi funciona no celular?
+
+O Dialogi e uma plataforma **web** — funciona no navegador do computador ou celular. Nao e necessario instalar nenhum aplicativo. Para melhor experiencia, recomendamos usar no computador (tela maior, teclado fisico).
+
+### Posso usar meu numero pessoal do WhatsApp?
+
+**Nao recomendamos.** Ao registrar um numero na API do WhatsApp Business, ele e desvinculado do app WhatsApp pessoal. Use um numero dedicado para a empresa. Veja mais em [Registrar Numero](/guia-meta/registrar-numero).
+
+## WhatsApp
+
+### Preciso do WhatsApp Business app para usar o Dialogi?
+
+**Nao.** O Dialogi usa a **API oficial do WhatsApp Business** (Cloud API), que e diferente do app WhatsApp Business. Na verdade, o numero registrado na API **nao pode** usar o app ao mesmo tempo. Veja o [Guia Meta](/guia-meta/conta-business) completo.
+
+### Posso enviar mensagens para qualquer pessoa?
+
+Para **iniciar** uma conversa, voce precisa usar um [template aprovado](/campanhas/templates) pela Meta. Para **responder** a mensagens de clientes, voce pode enviar mensagens livres dentro da janela de 24 horas. Veja [Templates](/guia-meta/templates-meta) para mais detalhes.
+
+### O que e a janela de 24 horas?
+
+Quando um cliente envia uma mensagem, abre uma "janela" de 24 horas onde voce pode responder livremente (texto, imagem, audio). Apos 24 horas sem interacao, a janela fecha e voce so pode enviar templates aprovados. Veja mais em [Inbox](/inbox/visao-geral).
+
+### Quantas mensagens posso enviar por dia?
+
+Depende do seu [tier de envio](/guia-meta/limites-tiers). Contas novas comecam no Tier 1 (1.000 conversas/dia) e podem subir ate ilimitado mantendo boa qualidade.
+
+### Meu numero pode ser bloqueado pela Meta?
+
+Sim, se voce tiver [Quality Rating](/guia-meta/quality-rating) baixo (vermelho). Isso acontece quando muitos clientes bloqueiam ou denunciam suas mensagens. Para evitar: envie apenas para quem quer receber, personalize as mensagens e respeite horarios.
+
+## Instagram
+
+### Posso iniciar conversas pelo Instagram?
+
+**Nao.** Diferente do WhatsApp, no Instagram o cliente sempre precisa enviar a primeira mensagem. Voce so pode responder DMs, nao iniciar. Veja [Conectar Instagram](/guia-meta/instagram-api).
+
+### Preciso de conta Instagram Business?
+
+**Sim.** Contas pessoais do Instagram nao funcionam com a API. Voce precisa converter para **Instagram Business** ou **Creator** e vincular a uma pagina do Facebook. Veja como em [Conectar Instagram](/primeiros-passos/conectar-instagram).
+
+### Recebo stories e reacoes no Dialogi?
+
+O Dialogi recebe **mencoes em stories** (quando alguem marca sua conta) e mensagens diretas. Reacoes a stories tambem aparecem como DMs.
+
+## Inteligencia Artificial
+
+### Quais IAs o Dialogi suporta?
+
+O Dialogi suporta tres providers: **Anthropic** (Claude), **OpenAI** (GPT) e **Ollama** (modelos locais). Veja como configurar em [Configurar Provider](/ia/configurar-provider).
+
+### A IA substitui meus atendentes?
+
+**Nao.** A IA complementa sua equipe. Ela responde perguntas frequentes automaticamente e transfere para um atendente humano quando a conversa e mais complexa. Veja [Regras de Delegacao](/ia/regras-delegacao).
+
+### Quanto custa usar a IA?
+
+Os providers cobram por uso (por mensagem/token). Com Claude Haiku ou GPT-4o-mini, o custo e de aproximadamente **R$ 4-5 por 1.000 conversas**. Ollama e gratuito se voce tiver servidor proprio. Veja custos detalhados em [Configurar Provider](/ia/configurar-provider).
+
+### Os clientes sabem que estao falando com IA?
+
+Isso depende de como voce configura o [System Prompt](/ia/system-prompt). Voce pode instruir a IA a se apresentar como assistente virtual ou nao. Recomendamos transparencia — informar ao cliente que e um atendimento automatico gera mais confianca.
+
+## Custos e Planos
+
+### O Dialogi e pago?
+
+Sim. O Dialogi oferece diferentes planos com funcionalidades e limites variados. Consulte [dialogi.com.br/precos](https://dialogi.com.br/precos) para detalhes.
+
+### Tem custo adicional por mensagem?
+
+O Dialogi **nao cobra por mensagem**. Porem, a **Meta cobra** por conversa iniciada via template no WhatsApp. Esse custo varia por pais e categoria do template. O custo do provider de IA tambem e separado.
+
+### Posso testar antes de assinar?
+
+Consulte os planos disponiveis em [dialogi.com.br/precos](https://dialogi.com.br/precos) para informacoes sobre periodo de teste.
+
+## Tecnico
+
+### O Dialogi fica fora do ar?
+
+O Dialogi e hospedado em infraestrutura profissional com alta disponibilidade. Em caso de manutencao programada, os clientes sao avisados com antecedencia.
+
+### Meus dados estao seguros?
+
+Sim. O Dialogi usa **HTTPS** (criptografia em transito), banco de dados protegido e segue boas praticas de seguranca. As mensagens do WhatsApp sao criptografadas de ponta a ponta pela propria Meta.
+
+### Posso exportar meus dados?
+
+Sim. Voce pode exportar contatos e historico de conversas pelo painel do Dialogi.
+
+### O Dialogi tem API?
+
+Sim. Oferecemos a [API de Leads](/integracoes/api-leads) para receber contatos e [Webhooks de Saida](/integracoes/webhooks-saida) para enviar eventos. Integracao com CRM, automacoes e outros sistemas e possivel.
+
+---
+
+<Callout type="info">
+  Nao encontrou sua duvida? Entre em contato com nosso suporte pelo Dialogi ou envie um email para suporte@dialogi.com.br.
+</Callout>

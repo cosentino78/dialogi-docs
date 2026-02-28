@@ -1,0 +1,91 @@
+# Assinatura do Atendente
+
+A **assinatura** e um texto automatico que identifica qual atendente esta respondendo ao cliente. Ela aparece no inicio ou final de cada mensagem enviada.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Por que usar assinatura?
+
+Quando sua empresa tem mais de um atendente, o cliente fala sempre com o mesmo numero do WhatsApp. A assinatura ajuda a:
+
+- **Identificar** quem esta respondendo — o cliente sabe com quem fala
+- **Humanizar** o atendimento — nao parece um robo
+- **Dar continuidade** — se o cliente voltar, sabe quem o atendeu
+
+### Exemplo
+
+Sem assinatura:
+```
+Seu agendamento esta confirmado para amanha as 14h.
+```
+
+Com assinatura:
+```
+*Ana* — Seu agendamento esta confirmado para amanha as 14h.
+```
+
+## Configurar sua assinatura
+
+<Steps>
+
+### Acesse as configuracoes
+
+No Dialogi, va em **Configuracoes** → **Perfil** (ou clique no seu avatar no canto inferior).
+
+### Edite a assinatura
+
+No campo **"Assinatura"**, digite o texto que deseja usar. Sugestoes:
+
+- Apenas o nome: `Ana`
+- Nome e funcao: `Ana - Atendimento`
+- Nome e empresa: `Ana | Clinica Bella Vida`
+
+<Screenshot alt="Campo de configuracao da assinatura do atendente" />
+
+### Salve
+
+Clique em **"Salvar"**. A partir de agora, todas as suas mensagens incluirao a assinatura automaticamente.
+
+</Steps>
+
+## Formato da assinatura
+
+A assinatura e adicionada automaticamente pelo Dialogi. O formato padrao e:
+
+```
+*NomeDoAtendente* — [sua mensagem aqui]
+```
+
+O nome aparece em **negrito** (usando a formatacao do WhatsApp com asteriscos).
+
+## Ativar ou desativar
+
+O administrador pode ativar ou desativar a assinatura para toda a equipe:
+
+1. Va em **Configuracoes** → **Inbox**
+2. Encontre a opcao **"Assinatura do atendente"**
+3. Ative ou desative conforme preferir
+
+<Callout type="info">
+  Mesmo com a assinatura desativada globalmente, cada atendente pode configurar sua assinatura no perfil — ela so sera exibida quando a funcionalidade estiver ativa.
+</Callout>
+
+## Boas praticas
+
+- **Mantenha curto** — use apenas o primeiro nome (ex: "Ana", nao "Ana Maria da Silva Santos")
+- **Seja consistente** — todos os atendentes devem usar o mesmo formato
+- **Evite emojis** — mantenha profissional
+- **Use nome real** — cria confianca com o cliente
+
+## Quando NAO usar assinatura
+
+Considere desativar a assinatura se:
+
+- Voce e o unico atendente — o cliente ja sabe com quem fala
+- Suas mensagens sao muito curtas — a assinatura pode ficar desproporcional
+- Voce usa IA — mensagens automaticas nao precisam de assinatura humana
+
+## Proximo passo
+
+Agora explore como a [IA do Dialogi](/ia/configurar-provider) pode complementar sua equipe, respondendo automaticamente perguntas frequentes.

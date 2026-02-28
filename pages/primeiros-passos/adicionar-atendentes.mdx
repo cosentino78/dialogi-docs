@@ -1,0 +1,120 @@
+# Adicionar Atendentes
+
+Monte sua equipe de atendimento no Dialogi. Cada atendente recebe seu proprio login e pode atender conversas simultaneamente.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Funcoes disponiveis
+
+O Dialogi tem dois tipos de usuarios:
+
+| Funcao | Permissoes |
+|---|---|
+| **Administrador** | Acesso total: configuracoes, canais, equipe, IA, campanhas, relatorios |
+| **Atendente** | Acesso a inbox, contatos e suas proprias conversas |
+
+<Callout type="info">
+  O usuario que criou a conta e automaticamente **Administrador**. Voce pode ter mais de um administrador.
+</Callout>
+
+## Adicionar um novo atendente
+
+<Steps>
+
+### Acesse as configuracoes
+
+No menu lateral, clique em **Configuracoes** → **Equipe** (ou **Atendentes**).
+
+<Screenshot alt="Menu Configuracoes > Equipe" />
+
+### Clique em "Adicionar atendente"
+
+Clique no botao **"Adicionar"** ou **"Convidar atendente"**.
+
+### Preencha os dados
+
+Informe:
+
+- **Nome** — nome completo do atendente
+- **Email** — email que sera usado para login
+- **Funcao** — Administrador ou Atendente
+
+<Screenshot alt="Formulario de adicao de atendente" />
+
+### Envie o convite
+
+Clique em **"Salvar"** ou **"Convidar"**. O atendente recebera um email com instrucoes para criar a senha e acessar o Dialogi.
+
+<Callout type="warning">
+  O atendente precisa acessar o email e criar a senha para ativar sua conta. Avise-o para verificar tambem a pasta de spam.
+</Callout>
+
+</Steps>
+
+## Gerenciando a equipe
+
+### Editar um atendente
+
+1. Va em **Configuracoes** → **Equipe**
+2. Clique no atendente que deseja editar
+3. Altere nome, email ou funcao
+4. Clique em **Salvar**
+
+### Desativar um atendente
+
+Se um atendente saiu da equipe:
+
+1. Va em **Configuracoes** → **Equipe**
+2. Clique no atendente
+3. Clique em **"Desativar"** ou **"Remover"**
+
+<Callout type="info">
+  Ao desativar um atendente, as conversas dele sao reatribuidas automaticamente. O historico de conversas e mantido.
+</Callout>
+
+### Alterar funcao
+
+Para promover um atendente a administrador (ou vice-versa):
+
+1. Va em **Configuracoes** → **Equipe**
+2. Clique no atendente
+3. Altere a **Funcao** para Administrador ou Atendente
+4. Clique em **Salvar**
+
+## Distribuicao de conversas
+
+Quando um novo cliente envia uma mensagem, o Dialogi pode distribuir a conversa de diferentes formas:
+
+| Modo | Como funciona |
+|---|---|
+| **Manual** | A conversa fica na fila e qualquer atendente pode pegar |
+| **Round-robin** | O Dialogi distribui automaticamente entre os atendentes disponiveis |
+
+A configuracao de distribuicao esta em **Configuracoes** → **Inbox**.
+
+## Boas praticas
+
+- **Cada atendente com seu login** — nunca compartilhe credenciais entre atendentes
+- **Nomeie claramente** — use o nome real do atendente para facilitar a identificacao
+- **Comece com poucos** — adicione 2-3 atendentes e va aumentando conforme a demanda
+- **Configure a assinatura** — cada atendente pode ter sua [assinatura personalizada](/inbox/assinatura)
+
+## Quantos atendentes preciso?
+
+Uma referencia simples:
+
+| Volume de conversas/dia | Atendentes sugeridos |
+|---|---|
+| Ate 20 | 1-2 |
+| 20 a 50 | 2-3 |
+| 50 a 100 | 3-5 |
+| 100+ | 5+ (ou use IA para filtrar) |
+
+<Callout type="info">
+  Com a [IA do Dialogi](/ia/configurar-provider), voce pode reduzir significativamente a carga dos atendentes. A IA responde perguntas frequentes automaticamente e so transfere para humanos quando necessario.
+</Callout>
+
+## Proximo passo
+
+Com a equipe montada, hora de [conectar seu WhatsApp](/primeiros-passos/conectar-whatsapp) ao Dialogi.

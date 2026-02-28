@@ -1,0 +1,128 @@
+# Primeira Mensagem
+
+Tudo configurado! Agora vamos testar que o Dialogi esta recebendo e enviando mensagens corretamente. Este teste leva menos de 2 minutos.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+## Teste do WhatsApp
+
+<Steps>
+
+### Pegue seu celular pessoal
+
+Use um numero de telefone **diferente** do que voce registrou na API. Pode ser seu celular pessoal, de um colega ou de um amigo.
+
+### Envie uma mensagem
+
+Abra o WhatsApp no celular e envie uma mensagem para o numero da empresa. Pode ser algo simples:
+
+> Oi, estou testando o Dialogi!
+
+### Verifique na inbox
+
+Abra o Dialogi no navegador e va ate a **Inbox**. A mensagem deve aparecer em **poucos segundos**.
+
+<Screenshot alt="Mensagem recebida na inbox do Dialogi" />
+
+### Responda pelo Dialogi
+
+Clique na conversa e digite uma resposta no campo de mensagem. Clique em **Enviar** (ou pressione Enter).
+
+### Verifique no celular
+
+Volte ao celular e confirme que a resposta chegou no WhatsApp.
+
+<Screenshot alt="Resposta do Dialogi recebida no WhatsApp do celular" />
+
+</Steps>
+
+<Callout type="info">
+  Se a mensagem apareceu na inbox e a resposta chegou no celular, parabens! Seu WhatsApp esta 100% integrado ao Dialogi.
+</Callout>
+
+## Teste do Instagram
+
+Se voce tambem conectou o Instagram:
+
+<Steps>
+
+### Use outra conta do Instagram
+
+Abra o Instagram com uma conta **diferente** da conta Business conectada.
+
+### Envie uma DM
+
+Va ate o perfil da sua empresa no Instagram e envie uma mensagem direta:
+
+> Ola, testando o Dialogi via Instagram!
+
+### Verifique na inbox
+
+No Dialogi, a mensagem deve aparecer na inbox com o icone do Instagram.
+
+### Responda pelo Dialogi
+
+Digite uma resposta e envie. Verifique no Instagram se a resposta chegou.
+
+</Steps>
+
+## Checklist de validacao
+
+Marque cada item conforme voce testar:
+
+- [ ] Mensagem do WhatsApp aparece na inbox do Dialogi
+- [ ] Resposta do Dialogi chega no WhatsApp do celular
+- [ ] Mensagem do Instagram aparece na inbox (se conectado)
+- [ ] Resposta do Dialogi chega no Instagram (se conectado)
+- [ ] O nome do contato aparece corretamente
+- [ ] Imagens e midias sao exibidas (teste enviando uma foto)
+
+## O que testar a seguir
+
+Agora que o basico funciona, explore essas funcionalidades:
+
+| Funcionalidade | Como testar |
+|---|---|
+| **Enviar imagem** | No Dialogi, clique no icone de anexo e envie uma imagem |
+| **Receber imagem** | Envie uma foto do celular para o numero da empresa |
+| **Atribuir conversa** | Atribua a conversa para outro atendente |
+| **Notas internas** | Adicione uma nota que so atendentes veem |
+| **Arquivar** | Finalize e arquive a conversa |
+
+## Problemas comuns
+
+### "A mensagem nao aparece na inbox"
+
+Verifique passo a passo:
+
+1. **Token** — o token permanente esta configurado? (Configuracoes → Canais → WhatsApp)
+2. **Webhook** — o webhook esta verificado na Meta? ([Guia de webhook](/guia-meta/configurar-webhook))
+3. **Campo messages** — o campo `messages` esta inscrito no webhook?
+4. **Numero** — voce esta enviando para o numero correto?
+5. **Conta** — voce esta logado na conta certa do Dialogi?
+
+### "Consigo receber, mas nao consigo responder"
+
+- Verifique se o **token** tem a permissao `whatsapp_business_messaging`
+- Verifique se o usuario do sistema tem **Controle total** sobre o app e a conta WhatsApp
+- Tente [gerar um novo token](/guia-meta/gerar-token)
+
+### "A resposta demora muito"
+
+- Delays de 1-3 segundos sao normais
+- Se passar de 10 segundos, pode ser um problema de rede
+- Verifique os logs do servidor se o problema persistir
+
+## Pronto para o dia a dia!
+
+Se todos os testes passaram, voce esta pronto para usar o Dialogi no dia a dia. Aqui estao os proximos passos sugeridos:
+
+1. **[Entenda a inbox](/inbox/visao-geral)** — aprenda a navegar pelo painel de atendimento
+2. **[Configure a IA](/ia/configurar-provider)** — deixe a IA responder perguntas frequentes automaticamente
+3. **[Crie templates](/campanhas/templates)** — prepare mensagens para campanhas e lembretes
+4. **[Explore as integracoes](/integracoes/api-leads)** — conecte o Dialogi a outros sistemas
+
+<Callout type="info">
+  Precisa de ajuda? Entre em contato com nosso suporte pelo proprio Dialogi ou envie um email para suporte@dialogi.com.br.
+</Callout>

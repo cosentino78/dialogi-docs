@@ -1,0 +1,115 @@
+# Conectar WhatsApp
+
+Conecte seu numero WhatsApp Business ao Dialogi para comecar a receber e responder mensagens diretamente no painel.
+
+import { Callout, Steps } from 'nextra/components'
+import { Screenshot } from '../../components/Screenshot'
+
+<Callout type="info">
+  Antes de conectar o WhatsApp no Dialogi, voce precisa ter completado a configuracao na Meta. Se ainda nao fez, siga o [Guia Meta](/guia-meta/conta-business) completo primeiro.
+</Callout>
+
+## O que voce precisa ter em maos
+
+Antes de comecar, confirme que voce ja tem:
+
+- [ ] [Conta Meta Business](/guia-meta/conta-business) criada
+- [ ] [Empresa verificada](/guia-meta/verificar-empresa) na Meta
+- [ ] [App criado](/guia-meta/criar-app) no Meta for Developers
+- [ ] [WhatsApp adicionado](/guia-meta/whatsapp-api) ao app
+- [ ] [Numero registrado](/guia-meta/registrar-numero) na API
+- [ ] [Token permanente](/guia-meta/gerar-token) gerado
+- [ ] **Phone Number ID** anotado
+- [ ] **WhatsApp Business Account ID** anotado
+
+<Callout type="warning">
+  Use o **token permanente**, nao o temporario. O token temporario expira em 24 horas e o Dialogi vai parar de funcionar. Veja como gerar o permanente em [Gerar Token Permanente](/guia-meta/gerar-token).
+</Callout>
+
+## Passo a passo
+
+<Steps>
+
+### Acesse as configuracoes de canais
+
+No Dialogi, va em **Configuracoes** → **Canais** → **WhatsApp**.
+
+<Screenshot alt="Menu Configuracoes > Canais > WhatsApp" />
+
+### Preencha os campos
+
+Insira as informacoes da sua conta WhatsApp:
+
+- **Token de acesso** — o token permanente que voce gerou
+- **Phone Number ID** — o ID do seu numero (encontrado no painel do app na Meta)
+- **WhatsApp Business Account ID** — o ID da sua conta WABA
+
+<Screenshot alt="Campos de configuracao do WhatsApp no Dialogi" />
+
+### Salve a configuracao
+
+Clique em **"Salvar"**. O Dialogi vai testar a conexao automaticamente.
+
+### Configure o webhook na Meta
+
+Se voce ainda nao configurou o webhook, o Dialogi vai exibir as informacoes necessarias:
+
+- **URL do Webhook**: `https://dialogi.com.br/api/webhook/whatsapp`
+- **Token de verificacao**: exibido na tela
+
+Copie esses valores e configure na Meta seguindo o [guia de webhook](/guia-meta/configurar-webhook).
+
+### Conexao concluida!
+
+Se tudo estiver certo, voce vera o status **"Conectado"** com um indicador verde.
+
+<Screenshot alt="Status Conectado do WhatsApp no Dialogi" />
+
+</Steps>
+
+## Verificando a conexao
+
+Para confirmar que tudo funciona:
+
+1. Pegue seu celular pessoal (um numero diferente do registrado)
+2. Envie uma mensagem para o numero da empresa no WhatsApp
+3. Abra o Dialogi → **Inbox**
+4. A mensagem deve aparecer em poucos segundos
+
+<Callout type="info">
+  Se a mensagem nao aparecer, verifique a secao de problemas comuns abaixo ou consulte o [guia de webhook](/guia-meta/configurar-webhook).
+</Callout>
+
+## Problemas comuns
+
+### "Status: Desconectado"
+
+- Verifique se o **token permanente** esta correto (nao o temporario)
+- Confirme que o **Phone Number ID** e o **WABA ID** estao corretos
+- Verifique se o app na Meta esta ativo (nao pausado ou removido)
+
+### "Mensagens nao chegam"
+
+- Verifique se o **webhook** esta configurado na Meta
+- Confirme que o campo **`messages`** esta inscrito no webhook
+- Teste enviando de outro numero (nao do mesmo numero registrado)
+
+### "Erro de token"
+
+- O token temporario expirou (dura 24h) — gere um [token permanente](/guia-meta/gerar-token)
+- O token foi revogado — gere um novo no Meta Business Suite
+- As permissoes do token estao incompletas — precisa de `whatsapp_business_messaging` e `whatsapp_business_management`
+
+## Multiplos numeros
+
+O Dialogi suporta conectar **mais de um numero** de WhatsApp. Para adicionar outro numero:
+
+1. Va em **Configuracoes** → **Canais** → **WhatsApp**
+2. Clique em **"Adicionar outro numero"**
+3. Repita o processo com os dados do novo numero
+
+Cada numero aparece separadamente na inbox, e voce pode filtrar conversas por numero.
+
+## Proximo passo
+
+Com o WhatsApp conectado, voce pode tambem [conectar o Instagram](/primeiros-passos/conectar-instagram) para centralizar todos os canais em uma unica inbox.
