@@ -1,0 +1,86 @@
+---
+title: "Campanhas Multicanal — Dialogi Docs"
+description: "Como criar campanhas multicanal no Dialogi: envio simultâneo por WhatsApp, Email e Instagram com conteudo personalizado por canal."
+date: 2026-03-19
+---
+
+# Campanhas Multicanal
+
+O Dialogi permite criar campanhas que alcancam seus contatos em multiplos canais simultaneamente: WhatsApp, Email e Instagram.
+
+import { Callout, Steps } from 'nextra/components'
+
+## Tipos de campanha
+
+| Tipo | Descricao |
+|------|-----------|
+| **Broadcast** | Envio unico em massa para uma lista de contatos |
+| **Drip** | Sequencia automatizada de mensagens com delays |
+| **Trigger** | Mensagem disparada por um evento (novo contato, agendamento, etc.) |
+
+## Criar uma campanha multicanal
+
+<Steps>
+
+### Acesse Campanhas
+
+Va em **Campanhas** no menu lateral e clique em **Nova Campanha**.
+
+### Defina nome e tipo
+
+Escolha um nome descritivo e o tipo de campanha (Broadcast, Drip ou Trigger).
+
+### Selecione os canais
+
+Marque os canais desejados: WhatsApp, Email, Instagram. Voce pode selecionar um ou mais.
+
+### Configure o conteudo por canal
+
+Cada canal tem seu proprio editor de conteudo:
+
+- **WhatsApp**: selecione um template aprovado pelo Meta, preencha as variaveis
+- **Email**: defina assunto e corpo do email (suporta HTML)
+- **Instagram**: escreva a mensagem de texto
+
+### Defina a audiencia
+
+Escolha quem vai receber:
+
+- **Contatos especificos** — selecione manualmente
+- **Lista de contatos** — use uma lista pre-existente
+- **Segmento** — use filtros dinamicos (tags, canal de origem, ultimo contato, etc.)
+
+### Agende ou envie
+
+Escolha enviar imediatamente ou agendar para uma data e horario especificos.
+
+</Steps>
+
+<Callout type="warning">
+  Para enviar campanhas por WhatsApp, voce precisa usar **templates aprovados pelo Meta**. Templates devem ser criados e aprovados previamente na secao de Templates.
+</Callout>
+
+## Conteudo personalizado
+
+Use variaveis para personalizar o conteudo:
+
+- `{{nome}}` — nome do contato
+- `{{empresa}}` — empresa do contato
+- `{{telefone}}` — telefone do contato
+
+As variaveis sao substituidas automaticamente para cada destinatario.
+
+## Metricas
+
+Apos o envio, acompanhe as metricas por canal:
+
+- **Enviados** — total de mensagens enviadas
+- **Entregues** — confirmacao de entrega
+- **Falhas** — mensagens que nao puderam ser entregues
+
+## Boas praticas
+
+1. **Respeite o opt-out** — nao envie para contatos que pediram para sair
+2. **Segmente bem** — mensagens relevantes tem mais engajamento
+3. **Varie os canais** — se o contato nao respondeu por WhatsApp, tente por email
+4. **Horarios adequados** — evite enviar em horarios inconvenientes

@@ -1,0 +1,53 @@
+---
+title: "Notificacoes — Visao Geral — Dialogi Docs"
+description: "Como funciona o sistema de notificacoes multicanal do Dialogi: templates, fila de envio e fallback entre canais."
+date: 2026-03-19
+---
+
+# Notificacoes
+
+O sistema de notificacoes do Dialogi permite enviar mensagens transacionais e de marketing para seus contatos via WhatsApp e Email, com fallback automatico entre canais.
+
+import { Callout } from 'nextra/components'
+
+## Como funciona
+
+1. Voce cria um **template de notificacao** com variaveis personalizaveis
+2. Define a **prioridade de canais** (ex: primeiro WhatsApp, depois Email)
+3. O sistema tenta enviar pelo canal prioritario
+4. Se falhar (sem numero, template rejeitado, etc.), tenta o proximo canal
+5. O status de cada envio e rastreado na fila
+
+## Tipos de notificacao
+
+| Tipo | Descricao | Exemplo |
+|------|-----------|---------|
+| **Transacional** | Relacionada a uma acao do cliente | Confirmacao de agendamento, status de pedido |
+| **Marketing** | Promocoes e conteudo (requer opt-in) | Ofertas, novidades, reengajamento |
+| **Sistema** | Mensagens internas da plataforma | Conversa transferida, agente indisponivel |
+
+<Callout type="warning">
+  Notificacoes de marketing exigem **consentimento previo** (opt-in) do contato. Enviar mensagens nao solicitadas pode resultar em bloqueio do canal.
+</Callout>
+
+## Canais suportados
+
+- **WhatsApp** — via templates aprovados pelo Meta
+- **Email** — via servico de email integrado (Resend)
+
+## Fila de envio
+
+Todas as notificacoes passam por uma fila que garante:
+
+- **Entrega ordenada** — mensagens sao processadas na ordem de criacao
+- **Retry automatico** — em caso de falha temporaria, o sistema tenta novamente
+- **Fallback de canal** — se um canal falha, tenta o proximo na lista de prioridade
+- **Rastreamento** — status de cada envio (pendente, enviado, falhou)
+
+## Agendamento
+
+Notificacoes podem ser agendadas para envio futuro. Util para:
+
+- Lembretes de agendamento (enviar 1h antes da consulta)
+- Mensagens de follow-up (enviar 24h apos o atendimento)
+- Campanhas programadas

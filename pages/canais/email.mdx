@@ -1,0 +1,46 @@
+---
+title: "Canal Email — Configuracao — Dialogi Docs"
+description: "Como configurar o canal de email no Dialogi para enviar notificacoes e campanhas por email."
+date: 2026-03-19
+---
+
+# Canal Email
+
+O canal Email permite enviar notificacoes, campanhas e mensagens transacionais por email diretamente do Dialogi.
+
+import { Callout } from 'nextra/components'
+
+## Como funciona
+
+O Dialogi utiliza servico de email integrado para:
+
+- **Notificacoes transacionais** — confirmacao de agendamento, lembretes, status de atendimento
+- **Campanhas de email** — envio de emails em lote para segmentos de contatos
+- **Email de boas-vindas** — enviado automaticamente no cadastro de novos usuarios
+
+<Callout type="info">
+  O envio de emails usa o servico Resend configurado na plataforma. Nao e necessario configurar SMTP manualmente.
+</Callout>
+
+## Configuracao
+
+1. Acesse **Canais > Email** no menu lateral
+2. Verifique o status da conexao
+3. Configure o endereco de remetente e nome de exibicao
+
+## Boas praticas
+
+- **Use templates de notificacao** para manter a consistencia das mensagens
+- **Respeite o opt-out** — contatos que pedirem para nao receber emails devem ser respeitados
+- **Evite spam** — envie apenas conteudo relevante e com frequencia moderada
+- **Personalize** — use variaveis como `{{nome}}` para personalizar os emails
+
+## Funcionalidades
+
+| Recurso | Suportado |
+|---------|-----------|
+| Envio de notificacoes | Sim |
+| Campanhas em lote | Sim |
+| Templates com variaveis | Sim |
+| Email de boas-vindas | Sim |
+| HTML responsivo | Sim |

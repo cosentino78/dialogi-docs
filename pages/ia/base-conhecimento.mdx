@@ -1,0 +1,73 @@
+---
+title: "Base de Conhecimento (RAG) — IA — Dialogi Docs"
+description: "Aprenda a treinar a IA do Dialogi com documentos da sua empresa usando RAG. Upload de PDFs, URLs e textos para respostas inteligentes."
+date: 2026-03-19
+---
+
+# Base de Conhecimento (RAG)
+
+A base de conhecimento permite treinar a IA com documentos da sua empresa. Usando RAG (Retrieval-Augmented Generation), a IA consulta seus documentos antes de responder, dando respostas precisas e contextualizadas.
+
+import { Callout, Steps } from 'nextra/components'
+
+<Callout type="info">
+  RAG significa que a IA **busca** informacao relevante nos seus documentos e **usa** essa informacao para formular a resposta. Isso e muito mais preciso do que apenas dar instrucoes no system prompt.
+</Callout>
+
+## Como funciona
+
+1. Voce faz upload de documentos (PDF, DOCX, TXT)
+2. O sistema extrai o texto e divide em blocos (chunks)
+3. Cada bloco e indexado com embeddings (representacao vetorial)
+4. Quando um cliente faz uma pergunta, a IA busca os blocos mais relevantes
+5. A IA usa esses blocos como contexto para gerar a resposta
+
+## Adicionar documentos
+
+<Steps>
+
+### Acesse a base de conhecimento
+
+Va em **IA > Knowledge Base** no menu lateral.
+
+### Faca upload
+
+Arraste e solte seus arquivos ou clique para selecionar. Formatos suportados:
+
+- **PDF** — manuais, catalogos, politicas
+- **DOCX** — documentos Word
+- **TXT** — textos simples
+
+### Aguarde o processamento
+
+O status do documento muda de "Processando" para "Pronto" quando a indexacao termina. Documentos grandes podem levar alguns minutos.
+
+### Teste
+
+Use o campo de teste para fazer perguntas e verificar se a IA encontra as respostas nos documentos.
+
+</Steps>
+
+## O que incluir na base
+
+**Bons documentos para upload:**
+
+- FAQ da empresa
+- Politicas de troca e devolucao
+- Tabela de precos e produtos
+- Manual de servicos
+- Termos de uso
+- Informacoes sobre horarios e localizacao
+
+**Evite:**
+
+- Documentos muito genericos (a IA ja tem conhecimento geral)
+- Dados sigilosos que nao devem ser compartilhados com clientes
+- Documentos desatualizados
+
+## Dicas para melhores resultados
+
+1. **Seja especifico** — documentos focados funcionam melhor que documentos genericos
+2. **Mantenha atualizado** — remova documentos desatualizados e adicione novas versoes
+3. **Teste regularmente** — faca perguntas comuns dos seus clientes para verificar as respostas
+4. **Combine com o system prompt** — instrua a IA a priorizar informacoes da base de conhecimento

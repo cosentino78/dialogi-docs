@@ -1,0 +1,72 @@
+---
+title: "Canal WhatsApp — Configuracao — Dialogi Docs"
+description: "Como configurar o canal WhatsApp no Dialogi usando a Meta WhatsApp Business API."
+date: 2026-03-19
+---
+
+# Canal WhatsApp
+
+O WhatsApp e o canal principal do Dialogi. A integracao usa a **Meta WhatsApp Business API** oficial, garantindo conformidade e recursos avancados como templates, botoes e listas.
+
+import { Callout, Steps } from 'nextra/components'
+
+## Pre-requisitos
+
+Antes de configurar, voce precisa ter:
+
+- Conta no [Meta Business Suite](https://business.facebook.com)
+- App criado no [Meta Developer Dashboard](https://developers.facebook.com)
+- Numero de telefone verificado para WhatsApp Business
+- Token de acesso permanente (System User Token)
+
+<Callout type="warning">
+  Tokens temporarios expiram em poucas horas. Sempre use um **System User Token** para producao. Veja o [Guia Meta](/guia-meta/gerar-token) para instrucoes.
+</Callout>
+
+## Configuracao
+
+<Steps>
+
+### Acesse as configuracoes
+
+Va em **Canais > WhatsApp** no menu lateral do Dialogi.
+
+### Preencha as credenciais
+
+- **Phone Number ID**: encontre no Meta Developer Dashboard > WhatsApp > API Setup
+- **WhatsApp Business Account ID**: na mesma pagina
+- **Access Token**: token permanente do System User
+
+### Configure o Webhook
+
+Copie a **Callback URL** e o **Verify Token** exibidos na pagina e configure no Meta Developer Dashboard:
+
+1. Acesse **Meta Developer Dashboard > Seu App > WhatsApp > Configuracao**
+2. Cole a Callback URL e o Verify Token
+3. Assine os campos: `messages`, `message_deliveries`, `message_reads`
+
+### Teste a conexao
+
+Clique em **Testar conexao** para verificar se tudo esta funcionando. Envie uma mensagem de teste para o numero conectado.
+
+</Steps>
+
+## Funcionalidades suportadas
+
+| Recurso | Suportado |
+|---------|-----------|
+| Texto | Sim |
+| Imagem / Video / Audio | Sim |
+| Documentos (PDF, etc.) | Sim |
+| Templates (HSM) | Sim |
+| Botoes interativos | Sim |
+| Listas | Sim |
+| Reacoes | Sim |
+| Status de entrega / leitura | Sim |
+| Transcricao de audio | Sim |
+
+## Solucao de problemas
+
+- **Token expirado**: gere um novo System User Token no Meta Business Suite
+- **Webhook nao valida**: verifique se o Verify Token no Meta e exatamente o mesmo exibido na pagina de configuracao
+- **Mensagens nao chegam**: confira se os campos `messages` estao assinados no webhook

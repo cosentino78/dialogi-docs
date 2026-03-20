@@ -1,0 +1,79 @@
+---
+title: "Pipeline de Vendas — CRM — Dialogi Docs"
+description: "Como usar o pipeline de vendas do Dialogi: quadro Kanban, estagios, drag and drop, e gerenciamento de negocios."
+date: 2026-03-19
+---
+
+# Pipeline de Vendas
+
+O pipeline e a visao principal do CRM. Ele mostra seus negocios organizados em estagios, como um quadro Kanban.
+
+import { Callout, Steps } from 'nextra/components'
+
+## Visao Kanban
+
+Cada coluna representa um estagio do seu processo de vendas. Os cards de negocios mostram:
+
+- **Nome** do negocio
+- **Valor** em R$
+- **Contato** e **empresa** vinculados
+- **Tempo** desde a criacao
+
+### Mover negocios entre estagios
+
+Arraste e solte (drag & drop) os cards entre as colunas para mover negocios entre estagios. Cada movimentacao e registrada automaticamente como uma atividade na timeline.
+
+## Estagios padrao
+
+O pipeline vem pre-configurado com 6 estagios:
+
+| Estagio | Probabilidade | Descricao |
+|---------|--------------|-----------|
+| Novo Lead | 10% | Contato inicial, ainda nao qualificado |
+| Qualificacao | 25% | Em processo de entender a necessidade |
+| Proposta | 50% | Proposta enviada, aguardando retorno |
+| Negociacao | 75% | Em negociacao de termos e valores |
+| Fechado Ganho | 100% | Negocio concluido com sucesso |
+| Fechado Perdido | 0% | Negocio perdido |
+
+<Callout type="info">
+  A probabilidade e usada para calcular a previsao de receita. Um negocio de R$10.000 no estagio "Proposta" (50%) tem previsao de R$5.000.
+</Callout>
+
+## Criar um negocio
+
+<Steps>
+
+### Clique em "Novo negocio"
+
+Na parte inferior de qualquer coluna, clique no botao **+ Novo negocio**.
+
+### Preencha os dados
+
+- **Nome**: descricao do negocio (ex: "Proposta Website - Empresa X")
+- **Valor**: valor estimado em R$
+
+### Salve
+
+O negocio aparece na coluna selecionada. Voce pode clicar nele para ver os detalhes, adicionar contato, empresa e notas.
+
+</Steps>
+
+## Detalhes do negocio
+
+Ao clicar em um card, voce acessa a pagina de detalhes com:
+
+- **Barra de progresso** mostrando o estagio atual no pipeline
+- **Informacoes** — contato, empresa, responsavel, data de criacao
+- **Acoes** — marcar como Ganho ou Perdido
+- **Timeline** — historico de atividades (mudancas de estagio, notas, etc.)
+- **Adicionar notas** — registrar informacoes sobre o negocio
+
+## Marcar como Ganho ou Perdido
+
+Na pagina de detalhes do negocio:
+
+- Clique em **Ganho** para fechar o negocio como sucesso
+- Clique em **Perdido** para registrar a perda (sera solicitado o motivo)
+
+Negocios fechados saem da visao Kanban mas permanecem no historico.

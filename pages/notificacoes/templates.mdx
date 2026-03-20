@@ -1,0 +1,70 @@
+---
+title: "Templates de Notificacao — Dialogi Docs"
+description: "Como criar e gerenciar templates de notificacao no Dialogi: variaveis, canais e boas praticas."
+date: 2026-03-19
+---
+
+# Templates de Notificacao
+
+Templates sao modelos de mensagem reutilizaveis com variaveis que sao substituidas dinamicamente para cada destinatario.
+
+import { Callout, Steps } from 'nextra/components'
+
+## Criar um template
+
+<Steps>
+
+### Acesse a configuracao
+
+Va em **Canais > Notificacoes** no menu lateral.
+
+### Crie um novo template
+
+Preencha:
+
+- **Nome** — identificador do template (ex: "Confirmacao Agendamento")
+- **Tipo** — Transacional, Marketing ou Sistema
+- **Canais** — selecione os canais de envio (WhatsApp, Email)
+- **Assunto** — para emails (ex: "Confirmacao do seu agendamento")
+- **Corpo** — texto da mensagem com variaveis
+
+### Use variaveis
+
+Insira variaveis usando chaves duplas:
+
+```
+Ola {{nome}}, seu agendamento para {{data}} as {{horario}}
+esta confirmado. Qualquer duvida, responda esta mensagem.
+```
+
+### Salve
+
+O template fica disponivel para uso em notificacoes e automacoes.
+
+</Steps>
+
+## Variaveis disponiveis
+
+| Variavel | Descricao |
+|----------|-----------|
+| `{{nome}}` | Nome do contato |
+| `{{email}}` | Email do contato |
+| `{{telefone}}` | Telefone do contato |
+| `{{empresa}}` | Empresa do contato |
+| `{{data}}` | Data (definida no envio) |
+| `{{horario}}` | Horario (definido no envio) |
+| `{{valor}}` | Valor monetario |
+
+Voce pode definir variaveis customizadas ao criar o template.
+
+<Callout type="info">
+  Para WhatsApp, o template de notificacao deve corresponder a um **template aprovado pelo Meta**. Crie o template no Meta primeiro e depois use o mesmo nome no Dialogi.
+</Callout>
+
+## Boas praticas
+
+1. **Seja conciso** — mensagens curtas tem mais engajamento
+2. **Personalize** — use `{{nome}}` para tornar a mensagem pessoal
+3. **Inclua uma acao** — diga ao cliente o que fazer a seguir
+4. **Teste antes** — envie uma notificacao de teste para si mesmo antes de usar em producao
+5. **Mantenha atualizado** — revise e atualize templates periodicamente

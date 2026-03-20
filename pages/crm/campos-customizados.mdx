@@ -1,0 +1,59 @@
+---
+title: "Campos Customizados — CRM — Dialogi Docs"
+description: "Como criar campos personalizados para contatos, empresas e negocios no CRM do Dialogi."
+date: 2026-03-19
+---
+
+# Campos Customizados
+
+Campos customizados permitem adaptar o CRM ao seu negocio. Adicione informacoes especificas a contatos, empresas e negocios alem dos campos padrao.
+
+import { Callout } from 'nextra/components'
+
+## Tipos de campo
+
+| Tipo | Descricao | Exemplo |
+|------|-----------|---------|
+| **Texto** | Campo de texto livre | "Observacao especial" |
+| **Numero** | Valor numerico | "Faturamento anual" |
+| **Data** | Seletor de data | "Data de aniversario" |
+| **Selecao** | Dropdown com opcoes | "Plano contratado" |
+| **Multipla selecao** | Varias opcoes | "Interesses" |
+| **Booleano** | Sim/Nao | "Cliente ativo" |
+| **URL** | Link | "LinkedIn" |
+| **Email** | Endereco de email | "Email alternativo" |
+| **Telefone** | Numero de telefone | "Celular pessoal" |
+
+## Criar um campo customizado
+
+1. Acesse as configuracoes de campos customizados via API
+2. Defina o **tipo de entidade** (contato, empresa ou negocio)
+3. Escolha o **nome** e a **chave** do campo (ex: `plano_contratado`)
+4. Selecione o **tipo** de dado
+5. Para campos de selecao, adicione as **opcoes** disponiveis
+
+<Callout type="warning">
+  A chave do campo (`fieldKey`) deve conter apenas letras minusculas, numeros e underscores. Exemplo: `plano_contratado`, `nps_score`, `data_contrato`.
+</Callout>
+
+## Entidades suportadas
+
+Os campos customizados podem ser adicionados a:
+
+- **Contatos** — informacoes adicionais sobre pessoas
+- **Empresas** — dados especificos de organizacoes
+- **Negocios** — detalhes de cada negocio no pipeline
+
+## Exemplos de uso
+
+### E-commerce
+- Contato: `data_ultima_compra` (Data), `valor_total_compras` (Numero)
+- Empresa: `cnpj` (Texto), `regime_tributario` (Selecao)
+
+### Saude
+- Contato: `convenio` (Selecao), `tipo_sangue` (Selecao)
+- Negocio: `tipo_procedimento` (Selecao), `cobertura_convenio` (Booleano)
+
+### Imobiliario
+- Contato: `regiao_interesse` (Multipla selecao), `faixa_preco` (Selecao)
+- Negocio: `tipo_imovel` (Selecao), `financiamento` (Booleano)

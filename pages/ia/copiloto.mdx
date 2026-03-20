@@ -1,0 +1,74 @@
+---
+title: "Copiloto do Agente — IA — Dialogi Docs"
+description: "Como usar a IA como copiloto do agente humano no Dialogi: sugestoes de resposta, resumos e acoes rapidas."
+date: 2026-03-19
+---
+
+# Copiloto do Agente
+
+O copiloto e o modo em que a IA **ajuda o agente humano** em vez de responder diretamente ao cliente. A IA sugere respostas, resume conversas e busca informacoes relevantes em tempo real.
+
+import { Callout } from 'nextra/components'
+
+## Modos de operacao da IA
+
+O Dialogi oferece dois modos de IA para cada conversa:
+
+| Modo | Descricao | Quando usar |
+|------|-----------|-------------|
+| **Automatico** | IA responde diretamente ao cliente | Perguntas frequentes, primeiro atendimento |
+| **Copiloto** | IA sugere respostas ao agente | Vendas complexas, atendimento personalizado |
+
+## Funcionalidades do copiloto
+
+### Sugestao de resposta
+
+A cada mensagem do cliente, a IA gera uma sugestao de resposta baseada em:
+
+- Historico da conversa
+- Base de conhecimento (RAG)
+- System prompt e regras configuradas
+
+O agente pode:
+- **Usar** a sugestao como esta
+- **Editar** antes de enviar
+- **Ignorar** e escrever sua propria resposta
+
+### Resumo da conversa
+
+A IA pode gerar um resumo automatico da conversa, util quando:
+
+- Um agente assume uma conversa de outro
+- A conversa e longa e o agente precisa de contexto rapido
+- Ao fechar a conversa, para registro
+
+### Busca na base de conhecimento
+
+O copiloto busca automaticamente informacoes relevantes na base de conhecimento com base na pergunta do cliente, mostrando os trechos mais relevantes ao agente.
+
+## Quando usar cada modo
+
+<Callout type="info">
+  **Recomendacao**: use o modo automatico para o primeiro atendimento e perguntas simples. Quando a IA escalar para um humano (por complexidade ou solicitacao do cliente), o copiloto entra em acao para ajudar o agente.
+</Callout>
+
+### Use modo automatico para:
+- FAQs e perguntas repetitivas
+- Atendimento fora do horario comercial
+- Triagem inicial (coletar dados do cliente)
+
+### Use copiloto para:
+- Negociacoes de vendas
+- Reclamacoes e casos sensiveis
+- Atendimento tecnico complexo
+- Situacoes que exigem empatia e julgamento humano
+
+## Regras de escalacao
+
+A IA no modo automatico escala para um agente humano quando:
+
+- O cliente pede explicitamente para falar com um humano
+- Palavras-chave de escalacao sao detectadas (ex: "gerente", "reclamacao")
+- A IA nao encontra resposta na base de conhecimento
+- O limite de mensagens automaticas e atingido
+- O sentimento do cliente e negativo por varias mensagens consecutivas

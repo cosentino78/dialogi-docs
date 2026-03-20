@@ -1,0 +1,67 @@
+---
+title: "Canal Instagram — Configuracao — Dialogi Docs"
+description: "Como configurar o canal Instagram Direct no Dialogi para receber e responder DMs automaticamente."
+date: 2026-03-19
+---
+
+# Canal Instagram
+
+Receba e responda mensagens do Instagram Direct diretamente na inbox do Dialogi. A integracao usa a **Instagram Messaging API** via Meta Graph API.
+
+import { Callout, Steps } from 'nextra/components'
+
+## Pre-requisitos
+
+- Conta Instagram Business ou Creator conectada a uma **Facebook Page**
+- App no [Meta Developer Dashboard](https://developers.facebook.com) (pode ser o mesmo usado para WhatsApp)
+- Produto **Instagram** adicionado ao App
+- Access Token de longa duracao (Long-Lived Page Access Token)
+
+<Callout type="info">
+  O Instagram usa o **mesmo App Meta** e o **mesmo Verify Token** do WhatsApp. Se voce ja configurou o WhatsApp, metade do caminho esta feito.
+</Callout>
+
+## Configuracao
+
+<Steps>
+
+### Acesse as configuracoes
+
+Va em **Canais > Instagram** no menu lateral do Dialogi.
+
+### Preencha as credenciais
+
+- **Page / Account ID**: encontre no Meta Developer Dashboard > Instagram > API Setup
+- **Page Access Token**: token de longa duracao da pagina conectada
+
+### Configure o Webhook
+
+Copie a **Callback URL** e o **Verify Token** exibidos na pagina:
+
+1. Acesse **Meta Developer Dashboard > Seu App > Instagram > Webhooks**
+2. Cole a Callback URL: `https://seudominio.com/api/webhook/instagram`
+3. Cole o Verify Token (mesmo do WhatsApp)
+4. Assine o campo: `messages`
+
+### Teste a conexao
+
+Clique em **Testar conexao**. O Dialogi vai verificar o acesso a conta Instagram e mostrar o username conectado.
+
+</Steps>
+
+## Funcionalidades suportadas
+
+| Recurso | Suportado |
+|---------|-----------|
+| Texto | Sim |
+| Imagem | Sim |
+| Audio | Sim |
+| Video | Sim |
+| Reacoes | Sim |
+
+## Solucao de problemas
+
+- **Erro 403 no webhook**: verifique se o Verify Token no Meta e identico ao exibido na pagina de configuracao do Dialogi
+- **Token expirado**: gere um novo Long-Lived Token. Tokens temporarios duram apenas ~1 hora
+- **Mensagens nao chegam**: confirme que o campo `messages` esta assinado nos webhooks do Instagram
+- **Erro "nonexisting field"**: atualize para a versao mais recente do Dialogi
